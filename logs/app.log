@@ -1,0 +1,313 @@
+[2025-06-05 16:48:10] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 16:48:12] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 16:48:12] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 16:48:13] INFO WDM: There is no [win64] chromedriver "137.0.7151.68" for browser google-chrome "137.0.7151" in cache
+[2025-06-05 16:48:13] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 16:48:14] INFO WDM: WebDriver version 137.0.7151.68 selected
+[2025-06-05 16:48:14] INFO WDM: Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.68/win32/chromedriver-win32.zip
+[2025-06-05 16:48:14] INFO WDM: About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.68/win32/chromedriver-win32.zip
+[2025-06-05 16:48:14] INFO WDM: Driver downloading response is 200
+[2025-06-05 16:48:28] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 16:48:30] INFO WDM: Driver has been saved in cache [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68]
+[2025-06-05 16:48:32] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-05 16:48:32] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-05 16:48:32] INFO __main__: Processing country: Turkey
+[2025-06-05 16:48:38] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-05 16:48:42] INFO scraper.navigator: Successfully navigated to Turkey universities page
+[2025-06-05 16:48:44] INFO scraper.navigator: Found 0 university links
+[2025-06-05 16:48:44] INFO __main__: Processing country: Germany
+[2025-06-05 16:48:45] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-05 16:48:48] INFO scraper.navigator: Successfully navigated to Germany universities page
+[2025-06-05 16:48:50] INFO scraper.navigator: Found 0 university links
+[2025-06-05 16:48:52] INFO scraper.navigator: WebDriver closed successfully
+[2025-06-05 17:07:49] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 17:07:49] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 17:07:50] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 17:07:50] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 17:07:52] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-05 17:07:52] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-05 17:07:52] INFO __main__: Opening home page and discovering countries...
+[2025-06-05 17:07:57] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-05 17:08:20] WARNING scraper.navigator: Element not found within 15 seconds: css selector=.filters .filter--country select
+[2025-06-05 17:08:20] WARNING scraper.navigator: Country filter dropdown not found
+[2025-06-05 17:08:20] ERROR __main__: No country URLs discovered, exiting
+[2025-06-05 17:08:22] INFO scraper.navigator: WebDriver closed successfully[2025-06-05 17:24:37] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 17:24:38] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 17:24:39] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 17:24:39] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 17:24:41] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-05 17:24:41] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-05 17:24:41] INFO __main__: Opening home page and discovering countries...
+[2025-06-05 17:24:46] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-05 17:25:08] WARNING scraper.navigator: Element not found within 15 seconds: css selector=.filters .filter--country select
+[2025-06-05 17:25:08] WARNING scraper.navigator: Country filter dropdown not found
+[2025-06-05 17:25:08] INFO scraper.navigator: Falling back to AI-powered country filter detection
+[2025-06-05 17:25:08] WARNING scraper.ai_filter: No OpenAI API key provided. AI filter detection will be disabled.
+[2025-06-05 17:25:08] WARNING scraper.navigator: AI filter detection not available (no API key)
+[2025-06-05 17:25:08] ERROR __main__: No country URLs discovered, exiting
+[2025-06-05 17:25:10] INFO scraper.navigator: WebDriver closed successfully
+[2025-06-05 17:46:34] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 17:46:35] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 17:46:43] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 17:46:43] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 17:46:45] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-05 17:46:45] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-05 17:46:45] INFO __main__: Opening home page and discovering countries...
+[2025-06-05 17:46:56] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-05 17:47:18] WARNING scraper.navigator: Element not found within 15 seconds: css selector=.filters .filter--country select
+[2025-06-05 17:47:18] WARNING scraper.navigator: Country filter dropdown not found
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=mobile-global-search-input, class=global-search__input hidden-desktop tomselected ts-hidden-accessible, outerHTML(first100)=<select id="mobile-global-search-input" class="global-search__input hidden-desktop tomselected ts-hi
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=global-search-input, class=global-search__input hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-input" class="global-search__input hidden-mobile tomselected ts-hidden-acc
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=global-search-scope, class=form-control global-search__scope hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-scope" class="form-control global-search__scope hidden-mobile tomselected 
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=country_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="country_ids" class="form-select tomselected ts-hidden-accessible" name="country_ids[]" m
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=city_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="city_ids" class="form-select tomselected ts-hidden-accessible" name="city_ids[]" multipl
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=study_level, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="study_level" class="form-select tomselected ts-hidden-accessible" name="study_level" dat
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=subjects, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="subjects" class="form-select tomselected ts-hidden-accessible" name="subjects[]" multipl
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=sectors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="sectors" class="form-select tomselected ts-hidden-accessible" name="sectors[]" data-type
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=funding_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="funding_types" class="form-select tomselected ts-hidden-accessible" name="funding_types[
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=established, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="established" class="form-select tomselected ts-hidden-accessible" name="established" dat
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=employees, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="employees" class="form-select tomselected ts-hidden-accessible" name="employees" data-ty
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=teachers, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="teachers" class="form-select tomselected ts-hidden-accessible" name="teachers" data-type
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="students" class="form-select tomselected ts-hidden-accessible" name="students" data-type
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=foreign_students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="foreign_students" class="form-select tomselected ts-hidden-accessible" name="foreign_stu
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=campus_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="campus_types" class="form-select tomselected ts-hidden-accessible" name="campus_types[]"
+[2025-06-05 17:47:18] WARNING scraper.navigator: Select element: id=gender_factors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="gender_factors" class="form-select tomselected ts-hidden-accessible" name="gender_factor
+[2025-06-05 17:47:18] INFO scraper.navigator: Falling back to AI-powered country filter detection
+[2025-06-05 17:47:18] WARNING scraper.ai_filter: No OpenAI API key provided. AI filter detection will be disabled.
+[2025-06-05 17:47:18] WARNING scraper.navigator: AI filter detection not available (no API key)
+[2025-06-05 17:47:18] ERROR __main__: No country URLs discovered, exiting
+[2025-06-05 17:47:21] INFO scraper.navigator: WebDriver closed successfully
+[2025-06-05 18:13:12] ERROR __main__: No API key provided. Set OPENROUTER_API_KEY environment variable or use --api-key
+[2025-06-05 18:13:12] INFO __main__: Get a free API key from: https://openrouter.ai/
+[2025-06-05 18:14:30] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:14:30] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:14:30] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:14:30] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:14:31] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:14:32] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:14:33] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:14:34] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:14:34] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:14:34] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:14:40] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:14:51] ERROR scraper.ai_navigator: Error getting AI navigation plan: Expecting value: line 1 column 1 (char 0)
+[2025-06-05 18:14:51] INFO scraper.ai_navigator: AI navigation plan: {}
+[2025-06-05 18:14:51] INFO scraper.ai_navigator: Executing AI strategy: 
+[2025-06-05 18:14:51] INFO scraper.ai_navigator: Next action: 
+[2025-06-05 18:14:53] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-05 18:15:30] ERROR __main__: No API key provided. Set OPENROUTER_API_KEY environment variable or use --api-key
+[2025-06-05 18:15:30] INFO __main__: Get a free API key from: https://openrouter.ai/
+[2025-06-05 18:16:50] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:16:50] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:16:50] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:16:50] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:16:51] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:16:52] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:16:53] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:16:54] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:16:54] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:16:54] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:17:00] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:17:13] ERROR scraper.ai_navigator: Error getting AI navigation plan: Expecting value: line 1 column 1 (char 0)
+[2025-06-05 18:17:13] INFO scraper.ai_navigator: AI navigation plan: {}
+[2025-06-05 18:17:13] INFO scraper.ai_navigator: Executing AI strategy: 
+[2025-06-05 18:17:13] INFO scraper.ai_navigator: Next action: 
+[2025-06-05 18:17:15] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-05 18:19:10] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:19:10] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:19:10] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:19:10] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:19:13] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:19:13] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:19:14] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:19:15] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:19:15] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:19:15] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:19:21] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:19:32] ERROR scraper.ai_navigator: Error getting AI navigation plan: Expecting value: line 1 column 1 (char 0)
+[2025-06-05 18:19:32] INFO scraper.ai_navigator: AI navigation plan: {}
+[2025-06-05 18:19:32] INFO scraper.ai_navigator: Executing AI strategy: 
+[2025-06-05 18:19:32] INFO scraper.ai_navigator: Next action: 
+[2025-06-05 18:19:34] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-05 18:20:10] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:20:10] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:20:10] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:20:10] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:20:11] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:20:12] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:20:12] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:20:14] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:20:14] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:20:14] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:20:19] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:20:32] ERROR scraper.ai_navigator: Error getting AI navigation plan: Expecting value: line 1 column 1 (char 0)
+[2025-06-05 18:20:32] INFO scraper.ai_navigator: AI navigation plan: {}
+[2025-06-05 18:20:32] INFO scraper.ai_navigator: Executing AI strategy: 
+[2025-06-05 18:20:32] INFO scraper.ai_navigator: Next action: 
+[2025-06-05 18:20:34] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-05 18:21:30] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:21:30] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:21:30] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:21:30] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:21:31] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:21:31] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:21:32] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:21:33] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:21:33] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:21:33] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:21:39] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:21:55] ERROR scraper.ai_navigator: Error getting AI navigation plan: Expecting value: line 1 column 1 (char 0)
+[2025-06-05 18:21:55] INFO scraper.ai_navigator: AI navigation plan: {}
+[2025-06-05 18:21:55] INFO scraper.ai_navigator: Executing AI strategy: 
+[2025-06-05 18:21:55] INFO scraper.ai_navigator: Next action: 
+[2025-06-05 18:21:57] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-05 18:28:28] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:28:28] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:28:28] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:28:28] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:28:29] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:28:30] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:28:30] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:28:32] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:28:32] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:28:32] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:28:45] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:28:58] INFO scraper.ai_navigator: AI navigation plan: {'strategy': 'The current page is a Cloudflare security check blocking access. University data cannot be scraped until the security challenge is bypassed. Manual intervention (e.g., solving CAPTCHA) or advanced tools (e.g., headless browser with JavaScript/Cookie support) are required to proceed.', 'next_action': 'navigate_to_link', 'target_selector': None, 'target_url': 'https://www.unipage.net/en/home', 'university_links': [], 'extracted_data': []}
+[2025-06-05 18:28:58] INFO scraper.ai_navigator: Executing AI strategy: The current page is a Cloudflare security check blocking access. University data cannot be scraped until the security challenge is bypassed. Manual intervention (e.g., solving CAPTCHA) or advanced tools (e.g., headless browser with JavaScript/Cookie support) are required to proceed.
+[2025-06-05 18:28:58] INFO scraper.ai_navigator: Next action: navigate_to_link
+[2025-06-05 18:28:58] INFO scraper.ai_navigator: AI suggested navigating to: https://www.unipage.net/en/home
+[2025-06-05 18:29:12] INFO scraper.ai_navigator: Executing AI strategy: The current page is a Cloudflare security check page. The actual university data is not accessible until the security verification is completed. To proceed, you need to handle the Cloudflare challenge (e.g., using a headless browser with JavaScript/Cookie support).
+[2025-06-05 18:29:12] INFO scraper.ai_navigator: Next action: extract_data
+[2025-06-05 18:29:15] ERROR __main__: Error during scraping: 'str' object has no attribute 'get'
+[2025-06-05 18:31:10] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:31:10] INFO __main__: Starting URL: https://www.unipage.net/en/home
+[2025-06-05 18:31:10] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:31:10] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:31:11] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:31:12] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:31:13] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:31:14] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:31:14] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:31:14] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/home
+[2025-06-05 18:31:28] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:31:37] INFO scraper.ai_navigator: AI navigation plan: {'strategy': "The homepage appears to be a portal with navigation options. University listings are likely under the 'Universities' section in the main menu. Need to navigate to the universities directory page first.", 'next_action': 'navigate_to_link', 'target_selector': "a[href='/en/universities']", 'target_url': 'https://www.unipage.net/en/universities', 'university_links': [], 'extracted_data': []}
+[2025-06-05 18:31:37] INFO scraper.ai_navigator: Executing AI strategy: The homepage appears to be a portal with navigation options. University listings are likely under the 'Universities' section in the main menu. Need to navigate to the universities directory page first.
+[2025-06-05 18:31:37] INFO scraper.ai_navigator: Next action: navigate_to_link
+[2025-06-05 18:31:37] INFO scraper.ai_navigator: AI suggested navigating to: https://www.unipage.net/en/universities
+[2025-06-05 18:32:00] INFO scraper.ai_navigator: Executing AI strategy: The current page appears to be the main universities search interface but doesn't display actual university listings in the provided HTML snippet. The next step should be to either interact with search filters (country/degree/etc.) or find paginated university listings. However, the HTML provided is truncated and doesn't show the actual university list section.
+[2025-06-05 18:32:00] INFO scraper.ai_navigator: Next action: find_universities_page
+[2025-06-05 18:32:00] INFO scraper.ai_navigator: AI suggested clicking element: div.search-results or div.university-list (speculative - not found in provided HTML)
+[2025-06-05 18:32:00] ERROR scraper.ai_navigator: Error clicking element div.search-results or div.university-list (speculative - not found in provided HTML): Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=137.0.7151.68); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Stacktrace:
+	GetHandleVerifier [0x0x11b3763+63299]
+	GetHandleVerifier [0x0x11b37a4+63364]
+	(No symbol) [0x0xfe1113]
+	(No symbol) [0x0xfe7920]
+	(No symbol) [0x0xfe9c4a]
+	(No symbol) [0x0xfe9cc7]
+	(No symbol) [0x0x1029114]
+	(No symbol) [0x0x1029c1b]
+	(No symbol) [0x0x1072212]
+	(No symbol) [0x0x104e5c4]
+	(No symbol) [0x0x106fa4a]
+	(No symbol) [0x0x104e376]
+	(No symbol) [0x0x101d6e0]
+	(No symbol) [0x0x101e544]
+	GetHandleVerifier [0x0x140e033+2531347]
+	GetHandleVerifier [0x0x1409332+2511634]
+	GetHandleVerifier [0x0x11d9eda+220858]
+	GetHandleVerifier [0x0x11ca528+156936]
+	GetHandleVerifier [0x0x11d0c5d+183357]
+	GetHandleVerifier [0x0x11bb6c8+95912]
+	GetHandleVerifier [0x0x11bb870+96336]
+	GetHandleVerifier [0x0x11a664a+9770]
+	BaseThreadInitThunk [0x0x76c1fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x772682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7726827e+238]
+
+[2025-06-05 18:32:02] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-05 18:33:40] INFO __main__: === AI-Driven University Scraper Starting ===
+[2025-06-05 18:33:40] INFO __main__: Starting URL: https://www.unipage.net/en/turkey/universities
+[2025-06-05 18:33:40] INFO __main__: Output file: ai_scraped_universities.json
+[2025-06-05 18:33:40] INFO WDM: ====== WebDriver manager ======
+[2025-06-05 18:33:41] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:33:41] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-05 18:33:42] INFO WDM: Driver [C:\Users\user\.wdm\drivers\chromedriver\win64\137.0.7151.68\chromedriver-win32/chromedriver.exe] found in cache
+[2025-06-05 18:33:43] INFO scraper.ai_navigator: Chrome WebDriver initialized for AI navigation
+[2025-06-05 18:33:43] INFO __main__: Letting AI analyze the website and extract university data...
+[2025-06-05 18:33:43] INFO scraper.ai_navigator: Opening starting page: https://www.unipage.net/en/turkey/universities
+[2025-06-05 18:33:59] INFO scraper.ai_navigator: Sending page to AI for analysis...
+[2025-06-05 18:34:44] INFO scraper.ai_navigator: AI navigation plan: {'strategy': 'The current page is a 404 error page. The universities list is not available here. Navigate to the home page to find the correct path to university listings.', 'next_action': 'navigate_to_link', 'target_selector': "a[href='/']", 'target_url': 'https://www.unipage.net/', 'university_links': [], 'extracted_data': []}
+[2025-06-05 18:34:44] INFO scraper.ai_navigator: Executing AI strategy: The current page is a 404 error page. The universities list is not available here. Navigate to the home page to find the correct path to university listings.
+[2025-06-05 18:34:44] INFO scraper.ai_navigator: Next action: navigate_to_link
+[2025-06-05 18:34:44] INFO scraper.ai_navigator: AI suggested navigating to: https://www.unipage.net/
+[2025-06-05 18:35:17] INFO scraper.ai_navigator: Executing AI strategy: The current page is the Russian homepage. To find university information, switch to the English version where university links are more likely structured. The English version's URL is provided in the language selector.
+[2025-06-05 18:35:17] INFO scraper.ai_navigator: Next action: navigate_to_link
+[2025-06-05 18:35:17] INFO scraper.ai_navigator: AI suggested navigating to: https://www.unipage.net/en/home
+[2025-06-05 18:35:31] INFO scraper.ai_navigator: Executing AI strategy: The homepage doesn't contain direct university listings. The most promising path is to navigate to the 'Services' section which likely contains university search functionality or educational institution listings.
+[2025-06-05 18:35:31] INFO scraper.ai_navigator: Next action: navigate_to_link
+[2025-06-05 18:35:31] INFO scraper.ai_navigator: AI suggested navigating to: https://www.unipage.net/en/services
+[2025-06-05 18:35:47] INFO scraper.ai_navigator: Executing AI strategy: The current page appears to be about services, not university listings. No direct university links matching the /en/123456/university-name pattern were found in the visible HTML. Need to locate the universities directory section.
+[2025-06-05 18:35:47] INFO scraper.ai_navigator: Next action: find_universities_page
+[2025-06-05 18:35:47] INFO scraper.ai_navigator: AI suggested clicking element: a[href^='/en/universities'], a[href*='search']
+[2025-06-05 18:35:57] ERROR scraper.ai_navigator: Error with selector a[href^='/en/universities'], a[href*='search']: Message: element not interactable
+  (Session info: chrome=137.0.7151.68)
+Stacktrace:
+	GetHandleVerifier [0x0x11b3763+63299]
+	GetHandleVerifier [0x0x11b37a4+63364]
+	(No symbol) [0x0xfe0f70]
+	(No symbol) [0x0x102aa2b]
+	(No symbol) [0x0x101f445]
+	(No symbol) [0x0x104e57c]
+	(No symbol) [0x0x101eed4]
+	(No symbol) [0x0x104e7f4]
+	(No symbol) [0x0x106fa4a]
+	(No symbol) [0x0x104e376]
+	(No symbol) [0x0x101d6e0]
+	(No symbol) [0x0x101e544]
+	GetHandleVerifier [0x0x140e033+2531347]
+	GetHandleVerifier [0x0x1409332+2511634]
+	GetHandleVerifier [0x0x11d9eda+220858]
+	GetHandleVerifier [0x0x11ca528+156936]
+	GetHandleVerifier [0x0x11d0c5d+183357]
+	GetHandleVerifier [0x0x11bb6c8+95912]
+	GetHandleVerifier [0x0x11bb870+96336]
+	GetHandleVerifier [0x0x11a664a+9770]
+	BaseThreadInitThunk [0x0x76c1fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x772682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7726827e+238]
+
+[2025-06-05 18:35:57] INFO scraper.ai_navigator: Fallback: trying direct country URL: https://www.unipage.net/en/turkey/universities
+[2025-06-05 18:36:14] INFO scraper.ai_navigator: Executing AI strategy: Current page shows a 404 error. The universities listing for Turkey appears unavailable at this URL. Need to navigate to homepage and find alternative paths to university listings.
+[2025-06-05 18:36:14] INFO scraper.ai_navigator: Next action: navigate_to_link
+[2025-06-05 18:36:14] INFO scraper.ai_navigator: AI suggested navigating to: /en/home
+[2025-06-05 18:36:14] ERROR scraper.ai_navigator: Error executing navigation plan: Message: invalid argument
+  (Session info: chrome=137.0.7151.68)
+Stacktrace:
+	GetHandleVerifier [0x0x11b3763+63299]
+	GetHandleVerifier [0x0x11b37a4+63364]
+	(No symbol) [0x0xfe0f70]
+	(No symbol) [0x0xfd145e]
+	(No symbol) [0x0xfcfb19]
+	(No symbol) [0x0xfd026b]
+	(No symbol) [0x0xfe4b3e]
+	(No symbol) [0x0x1070657]
+	(No symbol) [0x0x104e57c]
+	(No symbol) [0x0x106fa4a]
+	(No symbol) [0x0x104e376]
+	(No symbol) [0x0x101d6e0]
+	(No symbol) [0x0x101e544]
+	GetHandleVerifier [0x0x140e033+2531347]
+	GetHandleVerifier [0x0x1409332+2511634]
+	GetHandleVerifier [0x0x11d9eda+220858]
+	GetHandleVerifier [0x0x11ca528+156936]
+	GetHandleVerifier [0x0x11d0c5d+183357]
+	GetHandleVerifier [0x0x11bb6c8+95912]
+	GetHandleVerifier [0x0x11bb870+96336]
+	GetHandleVerifier [0x0x11a664a+9770]
+	BaseThreadInitThunk [0x0x76c1fcc9+25]
+	RtlGetAppContainerNamedObjectPath [0x0x772682ae+286]
+	RtlGetAppContainerNamedObjectPath [0x0x7726827e+238]
+
+[2025-06-05 18:36:16] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.

@@ -1,0 +1,5 @@
+selenium>=4.0
+beautifulsoup4
+webdriver-manager
+requests
+openai>=1.0.0
