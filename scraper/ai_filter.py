@@ -20,13 +20,13 @@ class CountryFilterAI:
     Uses LLM to analyze raw HTML and propose alternative selectors or direct URLs.
     """
     
-    def __init__(self, api_key: Optional[str] = None, model: str = "gpt-3.5-turbo"):
+    def __init__(self, api_key: Optional[str] = None, model: str = "deepseek/deepseek-r1:free"):
         """
         Initialize the CountryFilterAI helper.
         
         Args:
-            api_key (str, optional): OpenAI API key. If None, will try to get from environment
-            model (str): LLM model to use (default: gpt-3.5-turbo)
+            api_key (str, optional): OpenRouter API key. If None, will try to get from environment
+            model (str): LLM model to use (default: deepseek/deepseek-r1:free)
         """
         self.logger = logging.getLogger(__name__)
         self.api_key = api_key
@@ -35,10 +35,10 @@ class CountryFilterAI:
         # Try to get API key from environment if not provided
         if not self.api_key:
             import os
-            self.api_key = os.getenv('OPENAI_API_KEY')
+            self.api_key = os.getenv('OPENROUTER_API_KEY')
             
         if not self.api_key:
-            self.logger.warning("No OpenAI API key provided. AI filter detection will be disabled.")
+            self.logger.warning("No OpenRouter API key provided. AI filter detection will be disabled.")
     
     def detect_filters(self, page_html: str) -> List[CountryFilter]:
         """
@@ -169,7 +169,7 @@ Only return valid JSON. If no country filters are found, return an empty array [
         
         try:
             response = requests.post(
-                'https://api.openai.com/v1/chat/completions',
+                'https://openrouter.ai/api/v1/chat/completions',
                 headers=headers,
                 json=payload,
                 timeout=30

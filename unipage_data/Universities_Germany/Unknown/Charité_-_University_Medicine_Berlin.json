@@ -1,0 +1,26 @@
+{
+  "description": "Charité - University Medicine Berlin — private institution. Read about the admission process, tuition fees and scholarships.",
+  "extraction_metadata": {
+    "extractor_version": "1.0.0",
+    "source": "UniPage.net",
+    "timestamp": "2025-06-07T14:29:02.922279"
+  },
+  "json_ld_data": {},
+  "main_info": {
+    "name": "Charité - University Medicine Berlin",
+    "quick_facts": {}
+  },
+  "rankings": {
+    "rankings": []
+  },
+  "student_figures": {
+    "total_enrollment": "11"
+  },
+  "study_programs": {
+    "programs": []
+  },
+  "tuition_fees": {
+    "fees": {}
+  },
+  "university_name": "Charité - University Medicine Berlin"
+}

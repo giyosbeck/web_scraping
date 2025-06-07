@@ -6,7 +6,7 @@ import requests
 import json
 
 def test_openrouter_api():
-    api_key = "xxx"
+    api_key = "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"
     
     headers = {
         'Authorization': f'Bearer {api_key}',

@@ -1,0 +1,24 @@
+{
+  "description": "",
+  "extraction_metadata": {
+    "extractor_version": "1.0.0",
+    "source": "UniPage.net",
+    "timestamp": "2025-06-07T14:28:49.878761"
+  },
+  "json_ld_data": {},
+  "main_info": {
+    "name": "RWTH Aachen University",
+    "quick_facts": {}
+  },
+  "rankings": {
+    "rankings": []
+  },
+  "student_figures": {},
+  "study_programs": {
+    "programs": []
+  },
+  "tuition_fees": {
+    "fees": {}
+  },
+  "university_name": "RWTH Aachen University"
+}

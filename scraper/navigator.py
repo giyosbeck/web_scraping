@@ -298,7 +298,7 @@ class WebNavigator:
         
         try:
             # Initialize AI filter helper
-            ai_filter = CountryFilterAI()
+            ai_filter = CountryFilterAI(api_key="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")
             
             if not ai_filter.is_available():
                 self.logger.warning("AI filter detection not available (no API key)")
@@ -321,8 +321,13 @@ class WebNavigator:
                 try:
                     # If candidate has a direct URL, use it
                     if candidate.url:
-                        country_links.append(candidate.url)
-                        self.logger.info(f"Added direct URL from candidate: {candidate.url}")
+                        # Convert relative URLs to absolute URLs
+                        if candidate.url.startswith('/'):
+                            full_url = f"https://www.unipage.net{candidate.url}"
+                        else:
+                            full_url = candidate.url
+                        country_links.append(full_url)
+                        self.logger.info(f"Added direct URL from candidate: {full_url}")
                         continue
                     
                     # Otherwise, try to click the element and capture the URL

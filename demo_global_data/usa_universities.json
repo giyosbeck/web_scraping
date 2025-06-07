@@ -1,0 +1,209 @@
+{
+  "country": "USA",
+  "country_code": "usa",
+  "url": "https://www.unipage.net/ru/universities_usa",
+  "universities_count": 25,
+  "universities": [
+    {
+      "id": "67",
+      "name": "Гарвардский университет",
+      "url": "https://www.unipage.net/ru/67/harvard_university",
+      "slug": "harvard_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "6",
+      "name": "Массачусетский технологический институт",
+      "url": "https://www.unipage.net/ru/6/massachusetts_institute_of_technology",
+      "slug": "massachusetts_institute_of_technology",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "147",
+      "name": "Стэнфордский университет",
+      "url": "https://www.unipage.net/ru/147/stanford_university",
+      "slug": "stanford_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "30",
+      "name": "Калифорнийский технологический институт",
+      "url": "https://www.unipage.net/ru/30/california_institute_of_technology",
+      "slug": "california_institute_of_technology",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "195",
+      "name": "Принстонский университет",
+      "url": "https://www.unipage.net/ru/195/princeton_university",
+      "slug": "princeton_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "321",
+      "name": "Чикагский университет",
+      "url": "https://www.unipage.net/ru/321/university_of_chicago",
+      "slug": "university_of_chicago",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "52",
+      "name": "University Of Oxford",
+      "url": "https://www.unipage.net/ru/52/university_of_oxford",
+      "slug": "university_of_oxford",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "121",
+      "name": "Boston University",
+      "url": "https://www.unipage.net/ru/121/boston_university",
+      "slug": "boston_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "478",
+      "name": "Университете штата Айова",
+      "url": "https://www.unipage.net/ru/478/iowa_state_university",
+      "slug": "iowa_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11813",
+      "name": "Институте музыки Кертиса",
+      "url": "https://www.unipage.net/ru/11813/curtis_institute_of_music",
+      "slug": "curtis_institute_of_music",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "12059",
+      "name": "Oklahoma Panhandle State University",
+      "url": "https://www.unipage.net/ru/12059/oklahoma_panhandle_state_university",
+      "slug": "oklahoma_panhandle_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11462",
+      "name": "Delta State University",
+      "url": "https://www.unipage.net/ru/11462/delta_state_university",
+      "slug": "delta_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11309",
+      "name": "Minot State University",
+      "url": "https://www.unipage.net/ru/11309/minot_state_university",
+      "slug": "minot_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11219",
+      "name": "Bemidji State University",
+      "url": "https://www.unipage.net/ru/11219/bemidji_state_university",
+      "slug": "bemidji_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11393",
+      "name": "Northern State University",
+      "url": "https://www.unipage.net/ru/11393/northern_state_university",
+      "slug": "northern_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "10645",
+      "name": "South Dakota State University",
+      "url": "https://www.unipage.net/ru/10645/south_dakota_state_university",
+      "slug": "south_dakota_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "12342",
+      "name": "Mayville State University",
+      "url": "https://www.unipage.net/ru/12342/mayville_state_university",
+      "slug": "mayville_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11888",
+      "name": "Alaska Pacific University",
+      "url": "https://www.unipage.net/ru/11888/alaska_pacific_university",
+      "slug": "alaska_pacific_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11119",
+      "name": "Wayne State College",
+      "url": "https://www.unipage.net/ru/11119/wayne_state_college",
+      "slug": "wayne_state_college",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "11156",
+      "name": "Midwestern State University",
+      "url": "https://www.unipage.net/ru/11156/midwestern_state_university",
+      "slug": "midwestern_state_university",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "12011",
+      "name": "Saint Josephs College New York",
+      "url": "https://www.unipage.net/ru/12011/saint_josephs_college_new_york",
+      "slug": "saint_josephs_college_new_york",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "10554",
+      "name": "College Of William Mary",
+      "url": "https://www.unipage.net/ru/10554/college_of_william_mary",
+      "slug": "college_of_william_mary",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "3",
+      "name": "МГУ",
+      "url": "https://www.unipage.net/ru/3/moscow_state_university_named_after_m_v_lomonosov",
+      "slug": "moscow_state_university_named_after_m_v_lomonosov",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "675",
+      "name": "University of Massachusetts",
+      "url": "https://www.unipage.net/ru/675/university_of_massachusetts_boston",
+      "slug": "university_of_massachusetts_boston",
+      "country": "USA",
+      "country_code": "usa"
+    },
+    {
+      "id": "10572",
+      "name": "Американском университете",
+      "url": "https://www.unipage.net/ru/10572/american_university",
+      "slug": "american_university",
+      "country": "USA",
+      "country_code": "usa"
+    }
+  ],
+  "scraped_at": "2025-06-07T14:42:10.633068"
+}

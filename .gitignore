@@ -1,0 +1,34 @@
+# Virtual Environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large binary files
+*.deb
+google-chrome-stable_current_amd64.deb
+# Exclude downloaded installers
+*.pkg
+*.dmg
+*.exe
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp 

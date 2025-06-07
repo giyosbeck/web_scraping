@@ -311,3 +311,862 @@ Stacktrace:
 	RtlGetAppContainerNamedObjectPath [0x0x7726827e+238]
 
 [2025-06-05 18:36:16] WARNING __main__: No universities found. AI might need different prompts or the site structure has changed.
+[2025-06-07 14:15:33] INFO WDM: ====== WebDriver manager ======
+[2025-06-07 14:15:33] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:15:34] INFO WDM: About to download new driver from https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+[2025-06-07 14:15:34] INFO WDM: Driver downloading response is 200
+[2025-06-07 14:15:36] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:15:36] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:15:37] INFO WDM: Driver has been saved in cache [/home/giyosiddin/.wdm/drivers/chromedriver/linux64/114.0.5735.90]
+[2025-06-07 14:15:37] ERROR scraper.navigator: Failed to initialize Chrome WebDriver: Message: unknown error: cannot find Chrome binary
+Stacktrace:
+#0 0x6401a2e644e3 <unknown>
+#1 0x6401a2b93c76 <unknown>
+#2 0x6401a2bba757 <unknown>
+#3 0x6401a2bb9029 <unknown>
+#4 0x6401a2bf7ccc <unknown>
+#5 0x6401a2bf747f <unknown>
+#6 0x6401a2beede3 <unknown>
+#7 0x6401a2bc42dd <unknown>
+#8 0x6401a2bc534e <unknown>
+#9 0x6401a2e243e4 <unknown>
+#10 0x6401a2e283d7 <unknown>
+#11 0x6401a2e32b20 <unknown>
+#12 0x6401a2e29023 <unknown>
+#13 0x6401a2df71aa <unknown>
+#14 0x6401a2e4d6b8 <unknown>
+#15 0x6401a2e4d847 <unknown>
+#16 0x6401a2e5d243 <unknown>
+#17 0x72f4c349caa4 <unknown>
+#18 0x72f4c3529c3c <unknown>
+
+[2025-06-07 14:15:37] ERROR __main__: Unexpected error: Message: WebDriver initialization failed: Message: unknown error: cannot find Chrome binary
+Stacktrace:
+#0 0x6401a2e644e3 <unknown>
+#1 0x6401a2b93c76 <unknown>
+#2 0x6401a2bba757 <unknown>
+#3 0x6401a2bb9029 <unknown>
+#4 0x6401a2bf7ccc <unknown>
+#5 0x6401a2bf747f <unknown>
+#6 0x6401a2beede3 <unknown>
+#7 0x6401a2bc42dd <unknown>
+#8 0x6401a2bc534e <unknown>
+#9 0x6401a2e243e4 <unknown>
+#10 0x6401a2e283d7 <unknown>
+#11 0x6401a2e32b20 <unknown>
+#12 0x6401a2e29023 <unknown>
+#13 0x6401a2df71aa <unknown>
+#14 0x6401a2e4d6b8 <unknown>
+#15 0x6401a2e4d847 <unknown>
+#16 0x6401a2e5d243 <unknown>
+#17 0x72f4c349caa4 <unknown>
+#18 0x72f4c3529c3c <unknown>
+
+Traceback (most recent call last):
+  File "/home/giyosiddin/projects/web_scraping/scraper/navigator.py", line 50, in __init__
+    self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/giyosiddin/projects/web_scraping/venv/lib/python3.12/site-packages/selenium/webdriver/chrome/webdriver.py", line 47, in __init__
+    super().__init__(
+  File "/home/giyosiddin/projects/web_scraping/venv/lib/python3.12/site-packages/selenium/webdriver/chromium/webdriver.py", line 69, in __init__
+    super().__init__(command_executor=executor, options=options)
+  File "/home/giyosiddin/projects/web_scraping/venv/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 257, in __init__
+    self.start_session(capabilities)
+  File "/home/giyosiddin/projects/web_scraping/venv/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 356, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/giyosiddin/projects/web_scraping/venv/lib/python3.12/site-packages/selenium/webdriver/remote/webdriver.py", line 447, in execute
+    self.error_handler.check_response(response)
+  File "/home/giyosiddin/projects/web_scraping/venv/lib/python3.12/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot find Chrome binary
+Stacktrace:
+#0 0x6401a2e644e3 <unknown>
+#1 0x6401a2b93c76 <unknown>
+#2 0x6401a2bba757 <unknown>
+#3 0x6401a2bb9029 <unknown>
+#4 0x6401a2bf7ccc <unknown>
+#5 0x6401a2bf747f <unknown>
+#6 0x6401a2beede3 <unknown>
+#7 0x6401a2bc42dd <unknown>
+#8 0x6401a2bc534e <unknown>
+#9 0x6401a2e243e4 <unknown>
+#10 0x6401a2e283d7 <unknown>
+#11 0x6401a2e32b20 <unknown>
+#12 0x6401a2e29023 <unknown>
+#13 0x6401a2df71aa <unknown>
+#14 0x6401a2e4d6b8 <unknown>
+#15 0x6401a2e4d847 <unknown>
+#16 0x6401a2e5d243 <unknown>
+#17 0x72f4c349caa4 <unknown>
+#18 0x72f4c3529c3c <unknown>
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/giyosiddin/projects/web_scraping/scraper/main.py", line 87, in main
+    navigator = WebNavigator(headless=True, timeout=10)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/giyosiddin/projects/web_scraping/scraper/navigator.py", line 55, in __init__
+    raise WebDriverException(f"WebDriver initialization failed: {e}")
+selenium.common.exceptions.WebDriverException: Message: WebDriver initialization failed: Message: unknown error: cannot find Chrome binary
+Stacktrace:
+#0 0x6401a2e644e3 <unknown>
+#1 0x6401a2b93c76 <unknown>
+#2 0x6401a2bba757 <unknown>
+#3 0x6401a2bb9029 <unknown>
+#4 0x6401a2bf7ccc <unknown>
+#5 0x6401a2bf747f <unknown>
+#6 0x6401a2beede3 <unknown>
+#7 0x6401a2bc42dd <unknown>
+#8 0x6401a2bc534e <unknown>
+#9 0x6401a2e243e4 <unknown>
+#10 0x6401a2e283d7 <unknown>
+#11 0x6401a2e32b20 <unknown>
+#12 0x6401a2e29023 <unknown>
+#13 0x6401a2df71aa <unknown>
+#14 0x6401a2e4d6b8 <unknown>
+#15 0x6401a2e4d847 <unknown>
+#16 0x6401a2e5d243 <unknown>
+#17 0x72f4c349caa4 <unknown>
+#18 0x72f4c3529c3c <unknown>
+
+
+[2025-06-07 14:21:54] INFO WDM: ====== WebDriver manager ======
+[2025-06-07 14:21:55] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:21:55] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:21:55] INFO WDM: There is no [linux64] chromedriver "137.0.7151.68" for browser google-chrome "137.0.7151" in cache
+[2025-06-07 14:21:55] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:21:56] INFO WDM: WebDriver version 137.0.7151.68 selected
+[2025-06-07 14:21:56] INFO WDM: Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.68/linux64/chromedriver-linux64.zip
+[2025-06-07 14:21:56] INFO WDM: About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/137.0.7151.68/linux64/chromedriver-linux64.zip
+[2025-06-07 14:21:56] INFO WDM: Driver downloading response is 200
+[2025-06-07 14:21:59] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:21:59] INFO WDM: Driver has been saved in cache [/home/giyosiddin/.wdm/drivers/chromedriver/linux64/137.0.7151.68]
+[2025-06-07 14:22:00] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-07 14:22:00] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-07 14:22:00] INFO __main__: Opening home page and discovering countries...
+[2025-06-07 14:22:03] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-07 14:22:25] WARNING scraper.navigator: Element not found within 15 seconds: css selector=.filters .filter--country select
+[2025-06-07 14:22:25] WARNING scraper.navigator: Country filter dropdown not found
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=mobile-global-search-input, class=global-search__input hidden-desktop tomselected ts-hidden-accessible, outerHTML(first100)=<select id="mobile-global-search-input" class="global-search__input hidden-desktop tomselected ts-hi
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=global-search-input, class=global-search__input hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-input" class="global-search__input hidden-mobile tomselected ts-hidden-acc
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=global-search-scope, class=form-control global-search__scope hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-scope" class="form-control global-search__scope hidden-mobile tomselected 
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=country_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="country_ids" class="form-select tomselected ts-hidden-accessible" name="country_ids[]" m
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=city_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="city_ids" class="form-select tomselected ts-hidden-accessible" name="city_ids[]" multipl
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=study_level, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="study_level" class="form-select tomselected ts-hidden-accessible" name="study_level" dat
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=subjects, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="subjects" class="form-select tomselected ts-hidden-accessible" name="subjects[]" multipl
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=sectors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="sectors" class="form-select tomselected ts-hidden-accessible" name="sectors[]" data-type
+[2025-06-07 14:22:25] WARNING scraper.navigator: Select element: id=funding_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="funding_types" class="form-select tomselected ts-hidden-accessible" name="funding_types[
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=established, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="established" class="form-select tomselected ts-hidden-accessible" name="established" dat
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=employees, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="employees" class="form-select tomselected ts-hidden-accessible" name="employees" data-ty
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=teachers, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="teachers" class="form-select tomselected ts-hidden-accessible" name="teachers" data-type
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="students" class="form-select tomselected ts-hidden-accessible" name="students" data-type
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=foreign_students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="foreign_students" class="form-select tomselected ts-hidden-accessible" name="foreign_stu
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=campus_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="campus_types" class="form-select tomselected ts-hidden-accessible" name="campus_types[]"
+[2025-06-07 14:22:26] WARNING scraper.navigator: Select element: id=gender_factors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="gender_factors" class="form-select tomselected ts-hidden-accessible" name="gender_factor
+[2025-06-07 14:22:26] INFO scraper.navigator: Falling back to AI-powered country filter detection
+[2025-06-07 14:22:26] WARNING scraper.ai_filter: No OpenAI API key provided. AI filter detection will be disabled.
+[2025-06-07 14:22:26] WARNING scraper.navigator: AI filter detection not available (no API key)
+[2025-06-07 14:22:26] ERROR __main__: No country URLs discovered, exiting
+[2025-06-07 14:22:26] INFO scraper.navigator: WebDriver closed successfully
+[2025-06-07 14:24:35] INFO WDM: ====== WebDriver manager ======
+[2025-06-07 14:24:35] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:24:35] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:24:35] INFO WDM: Driver [/home/giyosiddin/.wdm/drivers/chromedriver/linux64/137.0.7151.68/chromedriver-linux64/chromedriver] found in cache
+[2025-06-07 14:24:36] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-07 14:24:36] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-07 14:24:36] INFO __main__: Opening home page and discovering countries...
+[2025-06-07 14:24:39] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-07 14:25:02] WARNING scraper.navigator: Element not found within 15 seconds: css selector=.filters .filter--country select
+[2025-06-07 14:25:02] WARNING scraper.navigator: Country filter dropdown not found
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=mobile-global-search-input, class=global-search__input hidden-desktop tomselected ts-hidden-accessible, outerHTML(first100)=<select id="mobile-global-search-input" class="global-search__input hidden-desktop tomselected ts-hi
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=global-search-input, class=global-search__input hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-input" class="global-search__input hidden-mobile tomselected ts-hidden-acc
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=global-search-scope, class=form-control global-search__scope hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-scope" class="form-control global-search__scope hidden-mobile tomselected 
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=country_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="country_ids" class="form-select tomselected ts-hidden-accessible" name="country_ids[]" m
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=city_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="city_ids" class="form-select tomselected ts-hidden-accessible" name="city_ids[]" multipl
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=study_level, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="study_level" class="form-select tomselected ts-hidden-accessible" name="study_level" dat
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=subjects, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="subjects" class="form-select tomselected ts-hidden-accessible" name="subjects[]" multipl
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=sectors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="sectors" class="form-select tomselected ts-hidden-accessible" name="sectors[]" data-type
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=funding_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="funding_types" class="form-select tomselected ts-hidden-accessible" name="funding_types[
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=established, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="established" class="form-select tomselected ts-hidden-accessible" name="established" dat
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=employees, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="employees" class="form-select tomselected ts-hidden-accessible" name="employees" data-ty
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=teachers, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="teachers" class="form-select tomselected ts-hidden-accessible" name="teachers" data-type
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="students" class="form-select tomselected ts-hidden-accessible" name="students" data-type
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=foreign_students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="foreign_students" class="form-select tomselected ts-hidden-accessible" name="foreign_stu
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=campus_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="campus_types" class="form-select tomselected ts-hidden-accessible" name="campus_types[]"
+[2025-06-07 14:25:02] WARNING scraper.navigator: Select element: id=gender_factors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="gender_factors" class="form-select tomselected ts-hidden-accessible" name="gender_factor
+[2025-06-07 14:25:02] INFO scraper.navigator: Falling back to AI-powered country filter detection
+[2025-06-07 14:25:17] INFO scraper.ai_filter: Successfully parsed 8 filter candidates
+[2025-06-07 14:25:17] INFO scraper.ai_filter: AI detected 8 country filter candidates
+[2025-06-07 14:25:17] INFO scraper.navigator: AI detected 8 country filter candidates
+[2025-06-07 14:25:17] ERROR scraper.navigator: Error waiting for element css selector=.search-filters__item h3:contains('Country') + .multiselect .multiselect__option: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=137.0.7151.68); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Stacktrace:
+#0 0x56c0ed783c4a <unknown>
+#1 0x56c0ed2296e0 <unknown>
+#2 0x56c0ed230378 <unknown>
+#3 0x56c0ed232c18 <unknown>
+#4 0x56c0ed232ca3 <unknown>
+#5 0x56c0ed27ab45 <unknown>
+#6 0x56c0ed27b311 <unknown>
+#7 0x56c0ed2c9ec4 <unknown>
+#8 0x56c0ed2a0e5d <unknown>
+#9 0x56c0ed2c72cc <unknown>
+#10 0x56c0ed2a0c03 <unknown>
+#11 0x56c0ed26d47b <unknown>
+#12 0x56c0ed26e0e1 <unknown>
+#13 0x56c0ed7483fb <unknown>
+#14 0x56c0ed74c32f <unknown>
+#15 0x56c0ed72ff39 <unknown>
+#16 0x56c0ed74cec8 <unknown>
+#17 0x56c0ed71468f <unknown>
+#18 0x56c0ed7712b8 <unknown>
+#19 0x56c0ed771496 <unknown>
+#20 0x56c0ed782b26 <unknown>
+#21 0x7b0ad229caa4 <unknown>
+#22 0x7b0ad2329c3c <unknown>
+
+[2025-06-07 14:25:17] WARNING scraper.navigator: Could not find element for candidate: .search-filters__item h3:contains('Country') + .multiselect .multiselect__option
+[2025-06-07 14:25:17] ERROR scraper.navigator: Error waiting for element css selector=.search-filters__item h3:contains('Country') + .multiselect .multiselect__option: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=137.0.7151.68); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Stacktrace:
+#0 0x56c0ed783c4a <unknown>
+#1 0x56c0ed2296e0 <unknown>
+#2 0x56c0ed230378 <unknown>
+#3 0x56c0ed232c18 <unknown>
+#4 0x56c0ed232ca3 <unknown>
+#5 0x56c0ed27ab45 <unknown>
+#6 0x56c0ed27b311 <unknown>
+#7 0x56c0ed2c9ec4 <unknown>
+#8 0x56c0ed2a0e5d <unknown>
+#9 0x56c0ed2c72cc <unknown>
+#10 0x56c0ed2a0c03 <unknown>
+#11 0x56c0ed26d47b <unknown>
+#12 0x56c0ed26e0e1 <unknown>
+#13 0x56c0ed7483fb <unknown>
+#14 0x56c0ed74c32f <unknown>
+#15 0x56c0ed72ff39 <unknown>
+#16 0x56c0ed74cec8 <unknown>
+#17 0x56c0ed71468f <unknown>
+#18 0x56c0ed7712b8 <unknown>
+#19 0x56c0ed771496 <unknown>
+#20 0x56c0ed782b26 <unknown>
+#21 0x7b0ad229caa4 <unknown>
+#22 0x7b0ad2329c3c <unknown>
+
+[2025-06-07 14:25:17] WARNING scraper.navigator: Could not find element for candidate: .search-filters__item h3:contains('Country') + .multiselect .multiselect__option
+[2025-06-07 14:25:17] ERROR scraper.navigator: Error waiting for element css selector=.search-filters__item h3:contains('Country') + .multiselect .multiselect__option: Message: invalid selector: An invalid or illegal selector was specified
+  (Session info: chrome=137.0.7151.68); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalid-selector-exception
+Stacktrace:
+#0 0x56c0ed783c4a <unknown>
+#1 0x56c0ed2296e0 <unknown>
+#2 0x56c0ed230378 <unknown>
+#3 0x56c0ed232c18 <unknown>
+#4 0x56c0ed232ca3 <unknown>
+#5 0x56c0ed27ab45 <unknown>
+#6 0x56c0ed27b311 <unknown>
+#7 0x56c0ed2c9ec4 <unknown>
+#8 0x56c0ed2a0e5d <unknown>
+#9 0x56c0ed2c72cc <unknown>
+#10 0x56c0ed2a0c03 <unknown>
+#11 0x56c0ed26d47b <unknown>
+#12 0x56c0ed26e0e1 <unknown>
+#13 0x56c0ed7483fb <unknown>
+#14 0x56c0ed74c32f <unknown>
+#15 0x56c0ed72ff39 <unknown>
+#16 0x56c0ed74cec8 <unknown>
+#17 0x56c0ed71468f <unknown>
+#18 0x56c0ed7712b8 <unknown>
+#19 0x56c0ed771496 <unknown>
+#20 0x56c0ed782b26 <unknown>
+#21 0x7b0ad229caa4 <unknown>
+#22 0x7b0ad2329c3c <unknown>
+
+[2025-06-07 14:25:17] WARNING scraper.navigator: Could not find element for candidate: .search-filters__item h3:contains('Country') + .multiselect .multiselect__option
+[2025-06-07 14:25:17] INFO scraper.navigator: Added direct URL from candidate: /en/universities_australia
+[2025-06-07 14:25:17] INFO scraper.navigator: Added direct URL from candidate: /en/universities_canada
+[2025-06-07 14:25:17] INFO scraper.navigator: Added direct URL from candidate: /en/universities_usa
+[2025-06-07 14:25:17] INFO scraper.navigator: Added direct URL from candidate: /en/universities_germany
+[2025-06-07 14:25:17] INFO scraper.navigator: Added direct URL from candidate: /en/universities_uk
+[2025-06-07 14:25:17] INFO scraper.navigator: AI discovery completed: found 5 unique country URLs
+[2025-06-07 14:25:17] INFO __main__: Discovered 5 countries
+[2025-06-07 14:25:17] INFO __main__: Filtered to 1 countries based on --countries argument
+[2025-06-07 14:25:17] INFO __main__: Processing country: Universities Germany (/en/universities_germany)
+[2025-06-07 14:25:17] ERROR scraper.navigator: Error opening URL /en/universities_germany: Message: invalid argument
+  (Session info: chrome=137.0.7151.68)
+Stacktrace:
+#0 0x56c0ed783c4a <unknown>
+#1 0x56c0ed229533 <unknown>
+#2 0x56c0ed210ae0 <unknown>
+#3 0x56c0ed20f0b9 <unknown>
+#4 0x56c0ed20f6ca <unknown>
+#5 0x56c0ed22cc09 <unknown>
+#6 0x56c0ed2c7ed5 <unknown>
+#7 0x56c0ed2a0e32 <unknown>
+#8 0x56c0ed2c72cc <unknown>
+#9 0x56c0ed2a0c03 <unknown>
+#10 0x56c0ed26d47b <unknown>
+#11 0x56c0ed26e0e1 <unknown>
+#12 0x56c0ed7483fb <unknown>
+#13 0x56c0ed74c32f <unknown>
+#14 0x56c0ed72ff39 <unknown>
+#15 0x56c0ed74cec8 <unknown>
+#16 0x56c0ed71468f <unknown>
+#17 0x56c0ed7712b8 <unknown>
+#18 0x56c0ed771496 <unknown>
+#19 0x56c0ed782b26 <unknown>
+#20 0x7b0ad229caa4 <unknown>
+#21 0x7b0ad2329c3c <unknown>
+
+[2025-06-07 14:25:17] ERROR __main__: Skipping country Universities Germany: failed to open country page
+[2025-06-07 14:25:17] INFO scraper.navigator: WebDriver closed successfully
+[2025-06-07 14:25:46] INFO WDM: ====== WebDriver manager ======
+[2025-06-07 14:25:46] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:25:46] INFO WDM: Get LATEST chromedriver version for google-chrome
+[2025-06-07 14:25:47] INFO WDM: Driver [/home/giyosiddin/.wdm/drivers/chromedriver/linux64/137.0.7151.68/chromedriver-linux64/chromedriver] found in cache
+[2025-06-07 14:25:47] INFO scraper.navigator: Chrome WebDriver initialized successfully
+[2025-06-07 14:25:47] INFO scraper.writer: DataWriter initialized with base path: unipage_data
+[2025-06-07 14:25:47] INFO __main__: Opening home page and discovering countries...
+[2025-06-07 14:25:50] INFO scraper.navigator: Successfully opened UniPage.net home page
+[2025-06-07 14:26:11] WARNING scraper.navigator: Element not found within 15 seconds: css selector=.filters .filter--country select
+[2025-06-07 14:26:11] WARNING scraper.navigator: Country filter dropdown not found
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=mobile-global-search-input, class=global-search__input hidden-desktop tomselected ts-hidden-accessible, outerHTML(first100)=<select id="mobile-global-search-input" class="global-search__input hidden-desktop tomselected ts-hi
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=global-search-input, class=global-search__input hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-input" class="global-search__input hidden-mobile tomselected ts-hidden-acc
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=global-search-scope, class=form-control global-search__scope hidden-mobile tomselected ts-hidden-accessible, outerHTML(first100)=<select id="global-search-scope" class="form-control global-search__scope hidden-mobile tomselected 
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=country_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="country_ids" class="form-select tomselected ts-hidden-accessible" name="country_ids[]" m
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=city_ids, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="city_ids" class="form-select tomselected ts-hidden-accessible" name="city_ids[]" multipl
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=study_level, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="study_level" class="form-select tomselected ts-hidden-accessible" name="study_level" dat
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=subjects, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="subjects" class="form-select tomselected ts-hidden-accessible" name="subjects[]" multipl
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=sectors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="sectors" class="form-select tomselected ts-hidden-accessible" name="sectors[]" data-type
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=funding_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="funding_types" class="form-select tomselected ts-hidden-accessible" name="funding_types[
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=established, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="established" class="form-select tomselected ts-hidden-accessible" name="established" dat
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=employees, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="employees" class="form-select tomselected ts-hidden-accessible" name="employees" data-ty
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=teachers, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="teachers" class="form-select tomselected ts-hidden-accessible" name="teachers" data-type
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="students" class="form-select tomselected ts-hidden-accessible" name="students" data-type
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=foreign_students, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="foreign_students" class="form-select tomselected ts-hidden-accessible" name="foreign_stu
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=campus_types, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="campus_types" class="form-select tomselected ts-hidden-accessible" name="campus_types[]"
+[2025-06-07 14:26:12] WARNING scraper.navigator: Select element: id=gender_factors, class=form-select tomselected ts-hidden-accessible, outerHTML(first100)=<select id="gender_factors" class="form-select tomselected ts-hidden-accessible" name="gender_factor
+[2025-06-07 14:26:12] INFO scraper.navigator: Falling back to AI-powered country filter detection
+[2025-06-07 14:26:33] INFO scraper.ai_filter: Successfully parsed 9 filter candidates
+[2025-06-07 14:26:33] INFO scraper.ai_filter: AI detected 9 country filter candidates
+[2025-06-07 14:26:33] INFO scraper.navigator: AI detected 9 country filter candidates
+[2025-06-07 14:26:43] WARNING scraper.navigator: Element not found within 5 seconds: css selector=.search-filters__options input[name='country_ids[]']
+[2025-06-07 14:26:43] WARNING scraper.navigator: Could not find element for candidate: .search-filters__options input[name='country_ids[]']
+[2025-06-07 14:26:53] WARNING scraper.navigator: Element not found within 5 seconds: css selector=.search-filters__options input[name='country_ids[]']
+[2025-06-07 14:26:53] WARNING scraper.navigator: Could not find element for candidate: .search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:03] WARNING scraper.navigator: Element not found within 5 seconds: css selector=.search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:03] WARNING scraper.navigator: Could not find element for candidate: .search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:13] WARNING scraper.navigator: Element not found within 5 seconds: css selector=.search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:13] WARNING scraper.navigator: Could not find element for candidate: .search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:23] WARNING scraper.navigator: Element not found within 5 seconds: css selector=.search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:23] WARNING scraper.navigator: Could not find element for candidate: .search-filters__options input[name='country_ids[]']
+[2025-06-07 14:27:23] INFO scraper.navigator: Added direct URL from candidate: https://www.unipage.net/en/universities_usa
+[2025-06-07 14:27:23] INFO scraper.navigator: Added direct URL from candidate: https://www.unipage.net/en/universities_canada
+[2025-06-07 14:27:23] INFO scraper.navigator: Added direct URL from candidate: https://www.unipage.net/en/universities_germany
+[2025-06-07 14:27:23] INFO scraper.navigator: Added direct URL from candidate: https://www.unipage.net/en/universities_france
+[2025-06-07 14:27:23] INFO scraper.navigator: AI discovery completed: found 4 unique country URLs
+[2025-06-07 14:27:23] INFO __main__: Discovered 4 countries
+[2025-06-07 14:27:23] INFO __main__: Filtered to 1 countries based on --countries argument
+[2025-06-07 14:27:23] INFO __main__: Processing country: Universities Germany (https://www.unipage.net/en/universities_germany)
+[2025-06-07 14:27:27] INFO scraper.navigator: Successfully opened URL: https://www.unipage.net/en/universities_germany
+[2025-06-07 14:27:58] INFO scraper.navigator: No scoped links found, falling back to all anchor tags
+[2025-06-07 14:28:02] INFO scraper.navigator: Found 33 university links
+[2025-06-07 14:28:02] INFO __main__: Found 33 university links for Universities Germany
+[2025-06-07 14:28:05] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/140/technical_university_of_munich
+[2025-06-07 14:28:06] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:06] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:06] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Technical University of Munich
+[2025-06-07 14:28:06] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:06] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:06] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:06] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:06] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:06] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:06] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:06] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:06] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:06] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Technical_University_of_Munich.json
+[2025-06-07 14:28:06] INFO __main__: Successfully saved data for Technical University of Munich in Unknown, Universities Germany
+[2025-06-07 14:28:11] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/34/heidelberg_university
+[2025-06-07 14:28:12] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:12] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:12] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Heidelberg University
+[2025-06-07 14:28:12] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:12] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:12] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'enrollment': 90
+[2025-06-07 14:28:12] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '90'}
+[2025-06-07 14:28:13] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:13] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:13] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:13] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:13] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:13] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Heidelberg_University.json
+[2025-06-07 14:28:13] INFO __main__: Successfully saved data for Heidelberg University in Unknown, Universities Germany
+[2025-06-07 14:28:17] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/411/ludwig_maximilian_university_of_munich
+[2025-06-07 14:28:18] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:18] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:18] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Ludwig Maximilian University of Munich
+[2025-06-07 14:28:18] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:18] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:18] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:18] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:18] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:18] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:18] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:18] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:18] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:18] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Ludwig_Maximilian_University_of_Munich.json
+[2025-06-07 14:28:18] INFO __main__: Successfully saved data for Ludwig Maximilian University of Munich in Unknown, Universities Germany
+[2025-06-07 14:28:23] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/425/university_of_freiburg
+[2025-06-07 14:28:23] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:23] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:23] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Freiburg
+[2025-06-07 14:28:23] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:23] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:23] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:23] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:23] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:23] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:23] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:23] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:23] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:23] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Freiburg.json
+[2025-06-07 14:28:23] INFO __main__: Successfully saved data for University of Freiburg in Unknown, Universities Germany
+[2025-06-07 14:28:27] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/450/university_of_g_ttingen
+[2025-06-07 14:28:27] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:27] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:27] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Göttingen
+[2025-06-07 14:28:27] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:27] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:27] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:27] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:27] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:27] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:27] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:27] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:27] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:27] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Göttingen.json
+[2025-06-07 14:28:27] INFO __main__: Successfully saved data for University of Göttingen in Unknown, Universities Germany
+[2025-06-07 14:28:30] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/617/karlsruhe_institute_of_technology
+[2025-06-07 14:28:31] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:31] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:31] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Karlsruhe Institute of Technology
+[2025-06-07 14:28:31] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:31] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:31] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:31] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:31] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:31] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:31] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:31] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:31] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:31] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Karlsruhe_Institute_of_Technology.json
+[2025-06-07 14:28:31] INFO __main__: Successfully saved data for Karlsruhe Institute of Technology in Unknown, Universities Germany
+[2025-06-07 14:28:34] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/6180/hertie_school_of_governance
+[2025-06-07 14:28:34] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:34] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:34] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Hertie School of Governance
+[2025-06-07 14:28:34] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:34] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:34] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:34] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:34] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:34] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:34] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:34] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:34] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:34] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Hertie_School_of_Governance.json
+[2025-06-07 14:28:34] INFO __main__: Successfully saved data for Hertie School of Governance in Unknown, Universities Germany
+[2025-06-07 14:28:37] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/196/humboldt_university_of_berlin
+[2025-06-07 14:28:37] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:37] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:37] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Humboldt University of Berlin
+[2025-06-07 14:28:37] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:37] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:37] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'enrollment': 95
+[2025-06-07 14:28:37] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '95'}
+[2025-06-07 14:28:37] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:37] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:37] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:37] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:37] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:37] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Humboldt_University_of_Berlin.json
+[2025-06-07 14:28:37] INFO __main__: Successfully saved data for Humboldt University of Berlin in Unknown, Universities Germany
+[2025-06-07 14:28:40] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/6139/jacobs_university_bremen
+[2025-06-07 14:28:41] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:41] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:41] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Jacobs University Bremen
+[2025-06-07 14:28:41] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:41] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:41] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:41] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:41] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:41] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:41] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:41] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:41] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:41] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Jacobs_University_Bremen.json
+[2025-06-07 14:28:41] INFO __main__: Successfully saved data for Jacobs University Bremen in Unknown, Universities Germany
+[2025-06-07 14:28:45] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/6143/universit_t_witten_herdecke
+[2025-06-07 14:28:45] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:45] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:45] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Witten/Herdecke University
+[2025-06-07 14:28:45] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:45] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:45] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:45] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:45] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:45] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:45] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:45] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:45] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:45] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Witten_Herdecke_University.json
+[2025-06-07 14:28:45] INFO __main__: Successfully saved data for Witten/Herdecke University in Unknown, Universities Germany
+[2025-06-07 14:28:49] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/609/rwth_aachen_university
+[2025-06-07 14:28:49] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:49] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:49] INFO scraper.extractor: Successfully extracted university name from h1 fallback: RWTH Aachen University
+[2025-06-07 14:28:49] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:49] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:49] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:49] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:49] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:49] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:49] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:49] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:49] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:49] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/RWTH_Aachen_University.json
+[2025-06-07 14:28:49] INFO __main__: Successfully saved data for RWTH Aachen University in Unknown, Universities Germany
+[2025-06-07 14:28:53] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/197/free_university_of_berlin
+[2025-06-07 14:28:53] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:53] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:53] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Freie Universität Berlin
+[2025-06-07 14:28:54] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:54] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:54] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'enrollment': 79
+[2025-06-07 14:28:54] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '79'}
+[2025-06-07 14:28:54] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:54] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:54] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:54] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:54] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:54] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Freie_Universität_Berlin.json
+[2025-06-07 14:28:54] INFO __main__: Successfully saved data for Freie Universität Berlin in Unknown, Universities Germany
+[2025-06-07 14:28:58] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/267/technical_university_of_berlin
+[2025-06-07 14:28:58] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:28:58] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:28:58] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Technical University of Berlin
+[2025-06-07 14:28:58] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:28:58] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:28:58] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:28:58] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:28:58] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:28:58] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:28:58] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:28:58] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:28:58] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:28:58] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Technical_University_of_Berlin.json
+[2025-06-07 14:28:58] INFO __main__: Successfully saved data for Technical University of Berlin in Unknown, Universities Germany
+[2025-06-07 14:29:02] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/6168/charit_universit_tsmedizin_berlin
+[2025-06-07 14:29:02] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:02] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:02] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Charité - University Medicine Berlin
+[2025-06-07 14:29:02] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:02] INFO scraper.extractor: Successfully extracted university description from fallback selector: p
+[2025-06-07 14:29:02] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'students': 11
+[2025-06-07 14:29:02] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '11'}
+[2025-06-07 14:29:02] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:02] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:02] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:02] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:02] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:02] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Charité_-_University_Medicine_Berlin.json
+[2025-06-07 14:29:02] INFO __main__: Successfully saved data for Charité - University Medicine Berlin in Unknown, Universities Germany
+[2025-06-07 14:29:05] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/447/university_of_bonn
+[2025-06-07 14:29:06] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:06] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:06] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Bonn
+[2025-06-07 14:29:06] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:06] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:06] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:06] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:06] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:06] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:06] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:06] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:06] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:06] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Bonn.json
+[2025-06-07 14:29:06] INFO __main__: Successfully saved data for University of Bonn in Unknown, Universities Germany
+[2025-06-07 14:29:09] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/488/tu_dresden
+[2025-06-07 14:29:09] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:09] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:09] INFO scraper.extractor: Successfully extracted university name from h1 fallback: TU Dresden
+[2025-06-07 14:29:09] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:09] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:09] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:09] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:09] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:09] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:09] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:09] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:09] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:09] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/TU_Dresden.json
+[2025-06-07 14:29:09] INFO __main__: Successfully saved data for TU Dresden in Unknown, Universities Germany
+[2025-06-07 14:29:12] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/200/university_of_hamburg
+[2025-06-07 14:29:12] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:12] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:12] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Hamburg
+[2025-06-07 14:29:13] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:13] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:13] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'enrollment': 95
+[2025-06-07 14:29:13] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '95'}
+[2025-06-07 14:29:13] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:13] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:13] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:13] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:13] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:13] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Hamburg.json
+[2025-06-07 14:29:13] INFO __main__: Successfully saved data for University of Hamburg in Unknown, Universities Germany
+[2025-06-07 14:29:16] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/617/karlsruhe_institute_of_technology_kit
+[2025-06-07 14:29:17] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:17] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:17] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Karlsruhe Institute of Technology
+[2025-06-07 14:29:17] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:17] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:17] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:17] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:17] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:17] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:17] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:17] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:17] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:17] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Karlsruhe_Institute_of_Technology.json
+[2025-06-07 14:29:17] INFO __main__: Successfully saved data for Karlsruhe Institute of Technology in Unknown, Universities Germany
+[2025-06-07 14:29:20] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/6118/university_of_konstanz
+[2025-06-07 14:29:21] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:21] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:21] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Konstanz
+[2025-06-07 14:29:21] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:21] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:21] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'enrollment': 6
+[2025-06-07 14:29:21] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '6'}
+[2025-06-07 14:29:21] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:21] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:21] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:21] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:21] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:21] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Konstanz.json
+[2025-06-07 14:29:21] INFO __main__: Successfully saved data for University of Konstanz in Unknown, Universities Germany
+[2025-06-07 14:29:25] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/411/university_of_munich
+[2025-06-07 14:29:25] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:25] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:25] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Ludwig Maximilian University of Munich
+[2025-06-07 14:29:25] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:25] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:25] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:25] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:25] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:25] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:25] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:25] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:25] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:25] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Ludwig_Maximilian_University_of_Munich.json
+[2025-06-07 14:29:25] INFO __main__: Successfully saved data for Ludwig Maximilian University of Munich in Unknown, Universities Germany
+[2025-06-07 14:29:29] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/140/technical_university_munich
+[2025-06-07 14:29:29] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:29] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:29] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Technical University of Munich
+[2025-06-07 14:29:29] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:30] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:30] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:30] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:30] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:30] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:30] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:30] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:30] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:30] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Technical_University_of_Munich.json
+[2025-06-07 14:29:30] INFO __main__: Successfully saved data for Technical University of Munich in Unknown, Universities Germany
+[2025-06-07 14:29:34] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/627/university_of_tuebingen
+[2025-06-07 14:29:34] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:34] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:34] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Tübingen
+[2025-06-07 14:29:34] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:34] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:34] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:34] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:34] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:34] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:34] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:34] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:34] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:34] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Tübingen.json
+[2025-06-07 14:29:34] INFO __main__: Successfully saved data for University of Tübingen in Unknown, Universities Germany
+[2025-06-07 14:29:37] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/449/university_of_frankfurt
+[2025-06-07 14:29:37] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:37] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:37] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Goethe University Frankfurt
+[2025-06-07 14:29:37] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:37] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:37] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:37] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:37] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:37] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:37] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:37] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:37] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:37] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Goethe_University_Frankfurt.json
+[2025-06-07 14:29:37] INFO __main__: Successfully saved data for Goethe University Frankfurt in Unknown, Universities Germany
+[2025-06-07 14:29:40] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/450/university_of_goettingen
+[2025-06-07 14:29:40] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:40] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:40] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Göttingen
+[2025-06-07 14:29:40] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:40] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:40] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:40] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:40] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:40] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:40] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:40] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:40] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:40] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Göttingen.json
+[2025-06-07 14:29:40] INFO __main__: Successfully saved data for University of Göttingen in Unknown, Universities Germany
+[2025-06-07 14:29:44] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/667/university_of_cologne
+[2025-06-07 14:29:44] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:44] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:44] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Cologne
+[2025-06-07 14:29:44] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:44] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:44] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:44] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:44] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:44] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:44] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:44] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:44] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:44] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Cologne.json
+[2025-06-07 14:29:44] INFO __main__: Successfully saved data for University of Cologne in Unknown, Universities Germany
+[2025-06-07 14:29:48] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/44/university_of_leipzig
+[2025-06-07 14:29:48] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:48] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:48] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Leipzig University
+[2025-06-07 14:29:48] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:48] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:48] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:48] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:48] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:48] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:48] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:48] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:48] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:48] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Leipzig_University.json
+[2025-06-07 14:29:48] INFO __main__: Successfully saved data for Leipzig University in Unknown, Universities Germany
+[2025-06-07 14:29:52] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/467/university_of_mainz
+[2025-06-07 14:29:52] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:52] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:52] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Johannes Gutenberg University Mainz
+[2025-06-07 14:29:52] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:52] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:52] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:52] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:52] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:52] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:52] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:52] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:52] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:52] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Johannes_Gutenberg_University_Mainz.json
+[2025-06-07 14:29:52] INFO __main__: Successfully saved data for Johannes Gutenberg University Mainz in Unknown, Universities Germany
+[2025-06-07 14:29:55] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/6151/fachhochschule_m_nster
+[2025-06-07 14:29:55] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:55] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:55] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Applied Sciences in Munster
+[2025-06-07 14:29:55] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:55] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:55] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:55] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:56] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:56] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:56] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:56] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:56] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:56] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Applied_Sciences_in_Munster.json
+[2025-06-07 14:29:56] INFO __main__: Successfully saved data for University of Applied Sciences in Munster in Unknown, Universities Germany
+[2025-06-07 14:29:59] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/469/university_of_wuerzburg
+[2025-06-07 14:29:59] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:29:59] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:29:59] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Würzburg
+[2025-06-07 14:29:59] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:29:59] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:29:59] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:29:59] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:29:59] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:29:59] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:29:59] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:29:59] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:29:59] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:29:59] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Würzburg.json
+[2025-06-07 14:29:59] INFO __main__: Successfully saved data for University of Würzburg in Unknown, Universities Germany
+[2025-06-07 14:30:02] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/546/technical_university_of_braunschweig
+[2025-06-07 14:30:02] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:30:02] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:30:02] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Technical University of Braunschweig
+[2025-06-07 14:30:02] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:30:02] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:30:02] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:30:02] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:30:02] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:30:02] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:30:02] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:30:02] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:30:02] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:30:02] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Technical_University_of_Braunschweig.json
+[2025-06-07 14:30:02] INFO __main__: Successfully saved data for Technical University of Braunschweig in Unknown, Universities Germany
+[2025-06-07 14:30:05] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/585/technical_university_darmstadt
+[2025-06-07 14:30:05] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:30:05] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:30:05] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Technische Universität Darmstadt
+[2025-06-07 14:30:05] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:30:06] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:30:06] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:30:06] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:30:06] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:30:06] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:30:06] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:30:06] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:30:06] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:30:06] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Technische_Universität_Darmstadt.json
+[2025-06-07 14:30:06] INFO __main__: Successfully saved data for Technische Universität Darmstadt in Unknown, Universities Germany
+[2025-06-07 14:30:09] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/519/university_of_hannover
+[2025-06-07 14:30:09] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:30:09] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:30:09] INFO scraper.extractor: Successfully extracted university name from h1 fallback: Leibniz University Hannover
+[2025-06-07 14:30:09] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:30:09] WARNING scraper.extractor: All university description extraction methods failed
+[2025-06-07 14:30:09] WARNING scraper.extractor: All student enrollment extraction methods failed
+[2025-06-07 14:30:09] INFO scraper.extractor: Final student figures extracted: {}
+[2025-06-07 14:30:09] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:30:09] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:30:09] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:30:09] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:30:09] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:30:09] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/Leibniz_University_Hannover.json
+[2025-06-07 14:30:09] INFO __main__: Successfully saved data for Leibniz University Hannover in Unknown, Universities Germany
+[2025-06-07 14:30:12] INFO scraper.navigator: Successfully navigated to university page: https://www.unipage.net/en/595/university_of_stuttgart
+[2025-06-07 14:30:12] INFO scraper.extractor: DataExtractor initialized with HTML content
+[2025-06-07 14:30:12] INFO scraper.extractor: Starting comprehensive data extraction
+[2025-06-07 14:30:12] INFO scraper.extractor: Successfully extracted university name from h1 fallback: University of Stuttgart
+[2025-06-07 14:30:12] WARNING scraper.extractor: All city extraction methods failed
+[2025-06-07 14:30:12] INFO scraper.extractor: Successfully extracted university description from fallback selector: p
+[2025-06-07 14:30:12] INFO scraper.extractor: Successfully extracted student enrollment using pattern 'enrollment': 6
+[2025-06-07 14:30:12] INFO scraper.extractor: Final student figures extracted: {'total_enrollment': '6'}
+[2025-06-07 14:30:12] WARNING scraper.extractor: Tuition fees section not found
+[2025-06-07 14:30:12] WARNING scraper.extractor: Study programs section not found
+[2025-06-07 14:30:12] WARNING scraper.extractor: Rankings section not found
+[2025-06-07 14:30:12] INFO scraper.extractor: Extracted JSON-LD data with 0 keys
+[2025-06-07 14:30:12] INFO scraper.extractor: Data extraction completed successfully
+[2025-06-07 14:30:12] INFO scraper.writer: Successfully saved university data: unipage_data/Universities_Germany/Unknown/University_of_Stuttgart.json
+[2025-06-07 14:30:12] INFO __main__: Successfully saved data for University of Stuttgart in Unknown, Universities Germany
+[2025-06-07 14:30:13] INFO scraper.navigator: WebDriver closed successfully

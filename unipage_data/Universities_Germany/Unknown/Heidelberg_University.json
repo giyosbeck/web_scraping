@@ -1,0 +1,26 @@
+{
+  "description": "",
+  "extraction_metadata": {
+    "extractor_version": "1.0.0",
+    "source": "UniPage.net",
+    "timestamp": "2025-06-07T14:28:13.082041"
+  },
+  "json_ld_data": {},
+  "main_info": {
+    "name": "Heidelberg University",
+    "quick_facts": {}
+  },
+  "rankings": {
+    "rankings": []
+  },
+  "student_figures": {
+    "total_enrollment": "90"
+  },
+  "study_programs": {
+    "programs": []
+  },
+  "tuition_fees": {
+    "fees": {}
+  },
+  "university_name": "Heidelberg University"
+}

@@ -1,0 +1,26 @@
+{
+  "description": "",
+  "extraction_metadata": {
+    "extractor_version": "1.0.0",
+    "source": "UniPage.net",
+    "timestamp": "2025-06-07T14:29:13.208983"
+  },
+  "json_ld_data": {},
+  "main_info": {
+    "name": "University of Hamburg",
+    "quick_facts": {}
+  },
+  "rankings": {
+    "rankings": []
+  },
+  "student_figures": {
+    "total_enrollment": "95"
+  },
+  "study_programs": {
+    "programs": []
+  },
+  "tuition_fees": {
+    "fees": {}
+  },
+  "university_name": "University of Hamburg"
+}

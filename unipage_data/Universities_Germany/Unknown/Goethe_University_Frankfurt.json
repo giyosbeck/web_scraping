@@ -1,0 +1,24 @@
+{
+  "description": "",
+  "extraction_metadata": {
+    "extractor_version": "1.0.0",
+    "source": "UniPage.net",
+    "timestamp": "2025-06-07T14:29:37.696804"
+  },
+  "json_ld_data": {},
+  "main_info": {
+    "name": "Goethe University Frankfurt",
+    "quick_facts": {}
+  },
+  "rankings": {
+    "rankings": []
+  },
+  "student_figures": {},
+  "study_programs": {
+    "programs": []
+  },
+  "tuition_fees": {
+    "fees": {}
+  },
+  "university_name": "Goethe University Frankfurt"
+}
