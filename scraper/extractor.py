@@ -783,3 +783,68 @@ Return the complete university data with ALL programs found:
         except Exception as e:
             self.logger.error(f"Error counting programs: {e}")
             return {"error": "count_failed", "Total": 0}
+
+    def extract_programs(self, html_content: str) -> List[Dict[str, Any]]:
+        """Extract program information from HTML content"""
+        try:
+            soup = BeautifulSoup(html_content, 'html.parser')
+            programs = []
+            
+            # Find all program cards
+            program_cards = soup.find_all('div', class_=lambda x: x and 'program-card' in x)
+            
+            for card in program_cards:
+                try:
+                    # Extract program name
+                    name_elem = card.find('h3') or card.find('h4')
+                    name = name_elem.text.strip() if name_elem else 'Unknown Program'
+                    
+                    # Extract degree level
+                    degree_elem = card.find('div', text=re.compile('Degree:'))
+                    degree = degree_elem.find_next('div').text.strip() if degree_elem else 'Unknown'
+                    
+                    # Extract faculty
+                    faculty_elem = card.find('div', text=re.compile('Faculty:'))
+                    faculty = faculty_elem.find_next('div').text.strip() if faculty_elem else 'Unknown'
+                    
+                    # Extract study mode
+                    mode_elem = card.find('div', text=re.compile('Study mode:'))
+                    study_mode = mode_elem.find_next('div').text.strip() if mode_elem else 'Unknown'
+                    
+                    # Extract duration
+                    duration_elem = card.find('div', text=re.compile('Duration:'))
+                    duration = duration_elem.find_next('div').text.strip() if duration_elem else 'Unknown'
+                    
+                    # Extract language
+                    language_elem = card.find('div', text=re.compile('Language:'))
+                    language = language_elem.find_next('div').text.strip() if language_elem else 'Unknown'
+                    
+                    # Extract tuition
+                    tuition_elem = card.find('div', text=re.compile('Tuition fee:'))
+                    tuition = self._extract_fee_info(tuition_elem.find_next('div').text.strip()) if tuition_elem else {}
+                    
+                    # Extract program page link
+                    link_elem = card.find('a', href=True)
+                    program_page = link_elem['href'] if link_elem else ''
+                    
+                    program = {
+                        'name': name,
+                        'degree_level': degree,
+                        'faculty': faculty,
+                        'study_mode': study_mode,
+                        'duration': duration,
+                        'language': language,
+                        'tuition': tuition,
+                        'program_page': program_page
+                    }
+                    programs.append(program)
+                    
+                except Exception as e:
+                    self.logger.error(f"Error extracting program card: {e}")
+                    continue
+            
+            return programs
+            
+        except Exception as e:
+            self.logger.error(f"Error extracting programs: {e}")
+            return []

@@ -19,7 +19,7 @@ from scraper.writer import Writer
 def main():
     """Main entry point for university scraping."""
     # Setup logging
-    logger = setup_logging()
+    logger = get_logger(__name__)
     
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Scrape university data from unipage.net')
