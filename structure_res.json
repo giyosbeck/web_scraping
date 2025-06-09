@@ -1,0 +1,103 @@
+{
+    "university": {
+        "name": "Bilkent University",
+        "type": "private non-profit",
+        "location": {
+            "country": "Turkey",
+            "city": "Ankara"
+        },
+        "website": "http://www.bilkent.edu.tr/",
+        "about": {
+            "description": "Bilkent University is a private non-profit university located in Ankara, Turkey. It is among the youngest higher education institutions in the country and a member of the European University Association (EUA).",
+            "establishment_year": 1984,
+            "students": {
+                "total": 9961,
+                "international": 521,
+                "female_percentage": 46
+            },
+            "rankings": {
+                "QS_World_University_Rankings_2025": 477,
+                "THE_Ranking": 701,
+                "by_subject": {
+                    "Social_Sciences_And_Management": {
+                        "QS_2024": 276
+                    },
+                    "Engineering_And_Technology": {
+                        "QS_2024": 285
+                    },
+                    "Arts_And_Humanities": {
+                        "QS_2024": 398
+                    },
+                    "Natural_Sciences": {
+                        "QS_2024": "451-500"
+                    }
+                }
+            },
+            "degrees_offered": [
+                "Bachelor",
+                "Master",
+                "Doctorate"
+            ]
+        },
+        "tuition_fees": {
+            "academic_calendar": "Semesters",
+            "calculation_period": "Per year",
+            "bachelor": {
+                "local": {
+                    "cost": 4165,
+                    "currency": "USD",
+                    "period": "year"
+                },
+                "foreign": {
+                    "cost": 14468,
+                    "currency": "USD",
+                    "period": "year"
+                }
+            },
+            "financial_aid": "Yes",
+            "additional_costs": [
+                "accommodation",
+                "transportation",
+                "study materials",
+                "meals",
+                "personal expenses"
+            ],
+            "website_for_details": "http://www.bilkent.edu.tr/"
+        },
+        "programs": [
+            {
+                "name": "Conference Interpreting",
+                "country": "Turkey",
+                "city": "Ankara",
+                "university": "Bilkent University",
+                "price": {
+                    "cost": 14468,
+                    "currency": "USD",
+                    "period": "program"
+                },
+                "study_level": "Master",
+                "study_degree": "MA",
+                "study_degree_hint": "Master of Arts",
+                "study_mode": "On campus",
+                "study_form": "Full-time",
+                "duration_months": 12,
+                "exams": [
+                    "GPA",
+                    "IELTS",
+                    "TOEFL"
+                ],
+                "study_field": [
+                    "Humanities",
+                    "Languages, Literature & Linguistics"
+                ],
+                "exam_scores": {
+                    "GPA": 2.0,
+                    "IELTS": 6.5,
+                    "TOEFL": 87
+                },
+                "program_page": "https://catalog.bilkent.edu.tr/dep/d34.html"
+            }
+        ]
+    }
+}
+

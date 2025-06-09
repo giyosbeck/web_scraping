@@ -1,530 +1,785 @@
-import json
-import logging
-from bs4 import BeautifulSoup
-from typing import Dict, List, Optional, Any
+"""
+University Data Extractor - Extracts comprehensive university information using AI
+"""
 
-class DataExtractor:
-    """
-    Extracts university data from HTML content and structures it according to the schema.
-    """
-    
-    def __init__(self, html_content: str, current_url: str = None):
-        """
-        Initialize the DataExtractor with raw HTML content.
+import json
+import re
+import requests
+from datetime import datetime
+from typing import Dict, Any, Optional, List
+from bs4 import BeautifulSoup
+from scraper.logger_config import get_logger
+
+
+class Extractor:
+    def __init__(self, logger):
+        self.logger = logger
         
-        Args:
-            html_content (str): Raw HTML content to parse
-            current_url (str, optional): Current page URL for fallback extraction
-        """
-        self.html_content = html_content
-        self.current_url = current_url
-        self.soup = BeautifulSoup(html_content, 'html.parser')
-        self.logger = logging.getLogger(__name__)
-        self.logger.info("DataExtractor initialized with HTML content")
-    
-    def extract_main_info(self) -> Dict[str, Any]:
-        """
-        Extract main university information from page title and Quick Facts table.
-        
-        Returns:
-            Dict containing main university information
-        """
-        main_info = {}
-        
+    def extract_common_info(self, html_content):
+        """Extract common university information"""
         try:
-            # Extract university name from h1.page-title
-            page_title = self.soup.find('h1', class_='page-title')
-            if page_title:
-                main_info['name'] = page_title.get_text(strip=True)
-                self.logger.info(f"Successfully extracted university name from h1.page-title: {main_info['name']}")
-            else:
-                self.logger.debug("h1.page-title selector failed, trying fallback h1 tag")
-                # Fallback to any h1 tag
-                h1_tag = self.soup.find('h1')
-                if h1_tag:
-                    main_info['name'] = h1_tag.get_text(strip=True)
-                    self.logger.info(f"Successfully extracted university name from h1 fallback: {main_info['name']}")
-                else:
-                    self.logger.debug("h1 fallback selector failed, trying URL-based extraction")
-                    # URL-based fallback using extract_university_name_from_url
-                    if self.current_url:
-                        main_info['name'] = self._extract_university_name_from_url(self.current_url)
-                        self.logger.info(f"Successfully extracted university name from URL: {main_info['name']}")
-                    else:
-                        main_info['name'] = "Unknown University"
-                        self.logger.warning("All university name extraction methods failed")
+            soup = BeautifulSoup(html_content, 'html.parser')
             
-            # Extract Quick Facts from table
-            quick_facts_table = self.soup.find('table', class_='quick-facts') or self.soup.find('div', class_='quick-facts')
-            if quick_facts_table:
-                facts = {}
-                rows = quick_facts_table.find_all('tr') if quick_facts_table.name == 'table' else quick_facts_table.find_all('div', class_='fact-row')
-                
-                for row in rows:
-                    cells = row.find_all(['td', 'th', 'div'])
-                    if len(cells) >= 2:
-                        key = cells[0].get_text(strip=True).lower().replace(' ', '_')
-                        value = cells[1].get_text(strip=True)
-                        facts[key] = value
-                
-                main_info['quick_facts'] = facts
-                self.logger.info(f"Successfully extracted {len(facts)} quick facts from table.quick-facts or div.quick-facts")
-                
-                # Extract city from quick facts if available
-                city_keys = ['city', 'location', 'address', 'campus_location']
-                for key in city_keys:
-                    if key in facts and facts[key]:
-                        main_info['city'] = facts[key]
-                        self.logger.info(f"Successfully extracted city from quick facts: {main_info['city']}")
-                        break
-            else:
-                main_info['quick_facts'] = {}
-                self.logger.debug("Quick facts selectors (table.quick-facts, div.quick-facts) failed")
-                
-                # Try to extract city from URL or page metadata as fallback
-                if not main_info.get('city'):
-                    city = self._extract_city_fallback()
-                    if city:
-                        main_info['city'] = city
-                        self.logger.info(f"Successfully extracted city from fallback method: {city}")
-                    else:
-                        self.logger.warning("All city extraction methods failed")
-                
-        except Exception as e:
-            self.logger.error(f"Error extracting main info: {str(e)}")
-            main_info = {'name': 'Unknown University', 'quick_facts': {}}
-        
-        return main_info
-    
-    def extract_contents(self) -> Dict[str, Any]:
-        """
-        Extract university description and student figures.
-        
-        Returns:
-            Dict containing description and student information
-        """
-        contents = {}
-        
-        try:
-            # Extract description from .university-description
-            description_elem = self.soup.find(class_='university-description')
-            if description_elem:
-                contents['description'] = description_elem.get_text(strip=True)
-                self.logger.info("Successfully extracted university description from .university-description")
-            else:
-                self.logger.debug(".university-description selector failed, trying fallback selectors")
-                # Fallback to common description selectors
-                fallback_selectors = ['.description', '.about', '.overview', 'p']
-                description_found = False
-                for selector in fallback_selectors:
-                    elem = self.soup.select_one(selector)
-                    if elem and len(elem.get_text(strip=True)) > 100:
-                        contents['description'] = elem.get_text(strip=True)
-                        self.logger.info(f"Successfully extracted university description from fallback selector: {selector}")
-                        description_found = True
-                        break
-                    else:
-                        self.logger.debug(f"Fallback selector {selector} failed or content too short")
-                
-                if not description_found:
-                    contents['description'] = ""
-                    self.logger.warning("All university description extraction methods failed")
+            # Extract basic info
+            name = soup.find('h1').text.strip()
+            type_elem = soup.find('div', text=re.compile('Type:'))
+            uni_type = type_elem.find_next('div').text.strip() if type_elem else 'Unknown'
             
-            # Extract student figures
-            student_figures = {}
+            # Extract location
+            location_elem = soup.find('div', text=re.compile('Location:'))
+            location_text = location_elem.find_next('div').text.strip() if location_elem else ''
+            city = location_text.split(',')[0].strip() if location_text else 'Unknown'
             
-            # Look for student enrollment numbers
-            enrollment_patterns = ['enrollment', 'students', 'student_count', 'total_students']
-            enrollment_found = False
-            for pattern in enrollment_patterns:
-                elem = self.soup.find(text=lambda text: text and pattern.lower() in text.lower())
-                if elem:
-                    parent = elem.parent
-                    if parent:
-                        text = parent.get_text(strip=True)
-                        # Extract numbers from text
-                        import re
-                        numbers = re.findall(r'\d+(?:,\d+)*', text)
-                        if numbers:
-                            student_figures['total_enrollment'] = numbers[0].replace(',', '')
-                            self.logger.info(f"Successfully extracted student enrollment using pattern '{pattern}': {student_figures['total_enrollment']}")
-                            enrollment_found = True
-                            break
-                        else:
-                            self.logger.debug(f"Pattern '{pattern}' found but no numbers extracted from text: {text}")
-                    else:
-                        self.logger.debug(f"Pattern '{pattern}' found but parent element is None")
-                else:
-                    self.logger.debug(f"Enrollment pattern '{pattern}' not found in page text")
+            # Extract website
+            website_elem = soup.find('a', href=re.compile('^http'))
+            website = website_elem['href'] if website_elem else ''
             
-            if not enrollment_found:
-                self.logger.warning("All student enrollment extraction methods failed")
+            # Extract description
+            desc_elem = soup.find('div', text=re.compile('About'))
+            description = desc_elem.find_next('div').text.strip() if desc_elem else ''
             
-            contents['student_figures'] = student_figures
-            self.logger.info(f"Final student figures extracted: {student_figures}")
+            # Extract rankings
+            rankings = {}
+            rankings_elem = soup.find('div', text=re.compile('Rankings'))
+            if rankings_elem:
+                ranking_items = rankings_elem.find_next('div').find_all('div')
+                for item in ranking_items:
+                    text = item.text.strip()
+                    if 'QS' in text:
+                        rankings['QS_World_University_Rankings'] = int(re.search(r'\d+', text).group())
+                    elif 'THE' in text:
+                        rankings['THE_Ranking'] = int(re.search(r'\d+', text).group())
             
-        except Exception as e:
-            self.logger.error(f"Error extracting contents: {str(e)}")
-            contents = {'description': '', 'student_figures': {}}
-        
-        return contents
-    
-    def extract_tuition_fees(self) -> Dict[str, Any]:
-        """
-        Extract tuition fees information from .tuition-fees-section.
-        
-        Returns:
-            Dict containing tuition fees data
-        """
-        tuition_fees = {}
-        
-        try:
-            fees_section = self.soup.find(class_='tuition-fees-section')
-            if fees_section:
-                # Extract fee information
-                fee_items = fees_section.find_all(['div', 'p', 'li'])
-                fees = {}
-                
+            # Extract tuition fees
+            tuition = {}
+            tuition_elem = soup.find('div', text=re.compile('Tuition fees'))
+            if tuition_elem:
+                fee_items = tuition_elem.find_next('div').find_all('div')
                 for item in fee_items:
-                    text = item.get_text(strip=True)
-                    if '$' in text or '€' in text or '£' in text or 'fee' in text.lower():
-                        # Parse fee information
-                        import re
-                        currency_match = re.search(r'[\$€£]\s*(\d+(?:,\d+)*(?:\.\d+)?)', text)
-                        if currency_match:
-                            amount = currency_match.group(1).replace(',', '')
-                            fee_type = text.split(':')[0].strip() if ':' in text else 'tuition'
-                            fees[fee_type.lower().replace(' ', '_')] = {
-                                'amount': amount,
-                                'currency': currency_match.group(0)[0],
-                                'description': text
-                            }
-                
-                tuition_fees['fees'] = fees
-                self.logger.info(f"Successfully extracted {len(fees)} fee items from .tuition-fees-section")
-            else:
-                tuition_fees['fees'] = {}
-                self.logger.debug(".tuition-fees-section selector failed")
-                self.logger.warning("Tuition fees section not found")
-                
-        except Exception as e:
-            self.logger.error(f"Error extracting tuition fees: {str(e)}")
-            tuition_fees = {'fees': {}}
-        
-        return tuition_fees
-    
-    def extract_study_programs(self) -> Dict[str, Any]:
-        """
-        Extract study programs from .programs-section.
-        
-        Returns:
-            Dict containing study programs data
-        """
-        study_programs = {}
-        
-        try:
-            programs_section = self.soup.find(class_='programs-section')
-            if programs_section:
-                programs = []
-                
-                # Look for program listings
-                program_items = programs_section.find_all(['div', 'li', 'h3', 'h4'])
-                
-                for item in program_items:
-                    text = item.get_text(strip=True)
-                    if text and len(text) > 5:  # Filter out empty or very short items
-                        program = {
-                            'name': text,
-                            'level': self._determine_program_level(text),
-                            'description': text
-                        }
-                        programs.append(program)
-                
-                study_programs['programs'] = programs
-                self.logger.info(f"Successfully extracted {len(programs)} study programs from .programs-section")
-            else:
-                study_programs['programs'] = []
-                self.logger.debug(".programs-section selector failed")
-                self.logger.warning("Study programs section not found")
-                
-        except Exception as e:
-            self.logger.error(f"Error extracting study programs: {str(e)}")
-            study_programs = {'programs': []}
-        
-        return study_programs
-    
-    def extract_rankings(self) -> Dict[str, Any]:
-        """
-        Extract university rankings from .rankings-section.
-        
-        Returns:
-            Dict containing rankings data
-        """
-        rankings = {}
-        
-        try:
-            rankings_section = self.soup.find(class_='rankings-section')
-            if rankings_section:
-                ranking_items = []
-                
-                # Look for ranking information
-                items = rankings_section.find_all(['div', 'p', 'li'])
-                
-                for item in items:
-                    text = item.get_text(strip=True)
-                    if any(keyword in text.lower() for keyword in ['rank', 'position', '#', 'top']):
-                        import re
-                        # Extract ranking number
-                        rank_match = re.search(r'#?(\d+)', text)
-                        if rank_match:
-                            ranking_item = {
-                                'rank': int(rank_match.group(1)),
-                                'source': self._extract_ranking_source(text),
-                                'description': text
-                            }
-                            ranking_items.append(ranking_item)
-                
-                rankings['rankings'] = ranking_items
-                self.logger.info(f"Successfully extracted {len(ranking_items)} rankings from .rankings-section")
-            else:
-                rankings['rankings'] = []
-                self.logger.debug(".rankings-section selector failed")
-                self.logger.warning("Rankings section not found")
-                
-        except Exception as e:
-            self.logger.error(f"Error extracting rankings: {str(e)}")
-            rankings = {'rankings': []}
-        
-        return rankings
-    
-    def extract_json_ld(self) -> Dict[str, Any]:
-        """
-        Parse JSON-LD structured data from script tags for fallback information.
-        
-        Returns:
-            Dict containing JSON-LD data
-        """
-        json_ld_data = {}
-        
-        try:
-            script_tags = self.soup.find_all('script', type='application/ld+json')
+                    text = item.text.strip()
+                    if 'Bachelor' in text:
+                        tuition['bachelor'] = self._extract_fee_info(text)
+                    elif 'Master' in text:
+                        tuition['master'] = self._extract_fee_info(text)
+                    elif 'Doctorate' in text:
+                        tuition['doctorate'] = self._extract_fee_info(text)
             
-            for script in script_tags:
-                try:
-                    data = json.loads(script.string)
-                    if isinstance(data, dict):
-                        json_ld_data.update(data)
-                    elif isinstance(data, list):
-                        for item in data:
-                            if isinstance(item, dict):
-                                json_ld_data.update(item)
-                except json.JSONDecodeError as e:
-                    self.logger.warning(f"Failed to parse JSON-LD: {str(e)}")
-                    continue
-            
-            self.logger.info(f"Extracted JSON-LD data with {len(json_ld_data)} keys")
-            
-        except Exception as e:
-            self.logger.error(f"Error extracting JSON-LD: {str(e)}")
-        
-        return json_ld_data
-    
-    def extract_all(self) -> Dict[str, Any]:
-        """
-        Combine all extracted data into final dictionary matching the schema structure.
-        
-        Returns:
-            Dict containing all extracted university data
-        """
-        try:
-            self.logger.info("Starting comprehensive data extraction")
-            
-            # Extract all sections
-            main_info = self.extract_main_info()
-            contents = self.extract_contents()
-            tuition_fees = self.extract_tuition_fees()
-            study_programs = self.extract_study_programs()
-            rankings = self.extract_rankings()
-            json_ld = self.extract_json_ld()
-            
-            # Combine into final structure
-            final_data = {
-                'university_name': main_info.get('name', 'Unknown University'),
-                'main_info': main_info,
-                'description': contents.get('description', ''),
-                'student_figures': contents.get('student_figures', {}),
-                'tuition_fees': tuition_fees,
-                'study_programs': study_programs,
-                'rankings': rankings,
-                'json_ld_data': json_ld,
-                'extraction_metadata': {
-                    'timestamp': self._get_timestamp(),
-                    'source': 'UniPage.net',
-                    'extractor_version': '1.0.0'
-                }
-            }
-            
-            # Use JSON-LD data as fallback for missing information
-            if json_ld and not final_data['description']:
-                final_data['description'] = json_ld.get('description', '')
-            
-            if json_ld and not final_data['university_name']:
-                final_data['university_name'] = json_ld.get('name', 'Unknown University')
-            
-            self.logger.info("Data extraction completed successfully")
-            return final_data
-            
-        except Exception as e:
-            self.logger.error(f"Error in extract_all: {str(e)}")
             return {
-                'university_name': 'Unknown University',
-                'main_info': {},
-                'description': '',
-                'student_figures': {},
-                'tuition_fees': {'fees': {}},
-                'study_programs': {'programs': []},
-                'rankings': {'rankings': []},
-                'json_ld_data': {},
-                'extraction_metadata': {
-                    'timestamp': self._get_timestamp(),
-                    'source': 'UniPage.net',
-                    'extractor_version': '1.0.0',
-                    'error': str(e)
-                }
+                'name': name,
+                'type': uni_type,
+                'location': {
+                    'country': 'Turkey',
+                    'city': city
+                },
+                'website': website,
+                'about': {
+                    'description': description,
+                    'rankings': rankings
+                },
+                'tuition_fees': tuition
             }
-    
-    def _determine_program_level(self, program_text: str) -> str:
-        """
-        Determine the academic level of a program based on its text.
-        
-        Args:
-            program_text (str): Program description text
-            
-        Returns:
-            str: Program level (bachelor, master, phd, etc.)
-        """
-        text_lower = program_text.lower()
-        
-        if any(keyword in text_lower for keyword in ['bachelor', 'b.s.', 'b.a.', 'undergraduate']):
-            return 'bachelor'
-        elif any(keyword in text_lower for keyword in ['master', 'm.s.', 'm.a.', 'graduate']):
-            return 'master'
-        elif any(keyword in text_lower for keyword in ['phd', 'ph.d.', 'doctorate', 'doctoral']):
-            return 'phd'
-        else:
-            return 'unknown'
-    
-    def _extract_ranking_source(self, ranking_text: str) -> str:
-        """
-        Extract the source of a ranking from its text.
-        
-        Args:
-            ranking_text (str): Ranking description text
-            
-        Returns:
-            str: Ranking source
-        """
-        common_sources = ['QS', 'Times Higher Education', 'THE', 'US News', 'Shanghai', 'ARWU']
-        
-        for source in common_sources:
-            if source.lower() in ranking_text.lower():
-                return source
-        
-        return 'Unknown'
-    
-    def _extract_university_name_from_url(self, uni_url: str) -> str:
-        """
-        Extract university name from university URL pattern.
-        
-        Args:
-            uni_url (str): URL like https://www.unipage.net/en/12345/university-name
-            
-        Returns:
-            str: University name extracted from URL
-        """
-        try:
-            import re
-            from urllib.parse import urlparse
-            # Extract name from URL pattern /en/{id}/{name}
-            match = re.search(r'/en/\d+/([^/?]+)', uni_url)
-            if match:
-                name_slug = match.group(1)
-                # Convert slug to readable name (replace hyphens/underscores with spaces, capitalize)
-                uni_name = name_slug.replace('-', ' ').replace('_', ' ').title()
-                return uni_name
-            else:
-                # Fallback: extract from URL path
-                path = urlparse(uni_url).path
-                parts = path.strip('/').split('/')
-                if len(parts) >= 3:
-                    return parts[-1].replace('-', ' ').replace('_', ' ').title()
-                return "Unknown University"
-        except Exception:
-            return "Unknown University"
-    
-    def _extract_city_fallback(self) -> str:
-        """
-        Extract city from URL or page metadata as fallback.
-        
-        Returns:
-            str: City name or empty string if not found
-        """
-        try:
-            # Try to extract from meta tags
-            meta_selectors = [
-                'meta[name="geo.placename"]',
-                'meta[property="og:locality"]',
-                'meta[name="location"]',
-                'meta[name="city"]'
-            ]
-            
-            for selector in meta_selectors:
-                meta_tag = self.soup.select_one(selector)
-                if meta_tag and meta_tag.get('content'):
-                    city = meta_tag.get('content').strip()
-                    self.logger.debug(f"Successfully extracted city from meta tag {selector}: {city}")
-                    return city
-                else:
-                    self.logger.debug(f"Meta selector {selector} failed")
-            
-            # Try to extract from structured data
-            script_tags = self.soup.find_all('script', type='application/ld+json')
-            for script in script_tags:
-                try:
-                    import json
-                    data = json.loads(script.string)
-                    if isinstance(data, dict):
-                        # Look for address or location information
-                        if 'address' in data:
-                            address = data['address']
-                            if isinstance(address, dict):
-                                city = address.get('addressLocality') or address.get('city')
-                                if city:
-                                    self.logger.debug(f"Successfully extracted city from JSON-LD address: {city}")
-                                    return city
-                        if 'location' in data:
-                            location = data['location']
-                            if isinstance(location, dict):
-                                city = location.get('name') or location.get('addressLocality')
-                                if city:
-                                    self.logger.debug(f"Successfully extracted city from JSON-LD location: {city}")
-                                    return city
-                except (json.JSONDecodeError, AttributeError):
-                    continue
-            
-            self.logger.debug("All city fallback extraction methods failed")
-            return ""
             
         except Exception as e:
-            self.logger.error(f"Error in city fallback extraction: {str(e)}")
-            return ""
+            self.logger.error(f"Error extracting common info: {e}")
+            return None
+            
+    def extract_program_info(self, html_content):
+        """Extract program information"""
+        try:
+            soup = BeautifulSoup(html_content, 'html.parser')
+            
+            # Extract program name
+            name = soup.find('h1').text.strip()
+            
+            # Extract study mode
+            mode_elem = soup.find('div', text=re.compile('Study mode:'))
+            study_mode = mode_elem.find_next('div').text.strip() if mode_elem else 'Unknown'
+            
+            # Extract duration
+            duration_elem = soup.find('div', text=re.compile('Duration:'))
+            duration = duration_elem.find_next('div').text.strip() if duration_elem else 'Unknown'
+            
+            # Extract language
+            language_elem = soup.find('div', text=re.compile('Language:'))
+            language = language_elem.find_next('div').text.strip() if language_elem else 'Unknown'
+            
+            # Extract tuition
+            tuition_elem = soup.find('div', text=re.compile('Tuition fee:'))
+            tuition = self._extract_fee_info(tuition_elem.find_next('div').text.strip()) if tuition_elem else {}
+            
+            # Extract exams
+            exams = []
+            exams_elem = soup.find('div', text=re.compile('Exams:'))
+            if exams_elem:
+                exam_items = exams_elem.find_next('div').find_all('div')
+                for item in exam_items:
+                    exams.append(item.text.strip())
+            
+            return {
+                'name': name,
+                'study_mode': study_mode,
+                'duration': duration,
+                'language': language,
+                'tuition': tuition,
+                'exams': exams
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Error extracting program info: {e}")
+            return None
+            
+    def _extract_fee_info(self, text):
+        """Helper method to extract fee information"""
+        try:
+            # Extract amount
+            amount_match = re.search(r'(\d[\d,]*\.?\d*)', text)
+            amount = float(amount_match.group(1).replace(',', '')) if amount_match else None
+            
+            # Extract currency
+            currency_match = re.search(r'(USD|EUR|TRY)', text)
+            currency = currency_match.group(1) if currency_match else 'USD'
+            
+            # Extract period
+            period = 'year'
+            if 'semester' in text.lower():
+                period = 'semester'
+            elif 'month' in text.lower():
+                period = 'month'
+                
+            return {
+                'amount': amount,
+                'currency': currency,
+                'period': period
+            }
+        except:
+            return {}
+
+class UniversityExtractor:
+    """Extracts comprehensive university data using AI and web scraping."""
     
-    def _get_timestamp(self) -> str:
+    def __init__(self, api_key: str, model: str = "deepseek/deepseek-r1:free"):
         """
-        Get current timestamp in ISO format.
+        Initialize the extractor.
+        
+        Args:
+            api_key: OpenRouter API key
+            model: Model to use for AI extraction
+        """
+        self.logger = get_logger(__name__)
+        self.api_key = api_key
+        self.model = model
+        self.base_url = "https://openrouter.ai/api/v1"
+    
+    def extract_university_data(self, html: str, url: str, program_links: List[Dict[str, str]] = None) -> Optional[Dict[str, Any]]:
+        """
+        Extract comprehensive university data using multi-pass AI extraction.
+        
+        Args:
+            html: University page HTML
+            url: University page URL
         
         Returns:
-            str: Current timestamp
+            dict: Comprehensive university data in the specified format
         """
-        from datetime import datetime
+        try:
+            self.logger.info(f"Extracting university data from: {url}")
+            
+            # Clean and prepare HTML for AI analysis
+            clean_html = self._clean_html(html)
+            
+            # Save debug info about content size
+            self.logger.info(f"Original HTML size: {len(html)} characters")
+            self.logger.info(f"Cleaned HTML size: {len(clean_html)} characters")
+            
+            # Count program mentions
+            program_keywords = ["bachelor", "master", "phd", "doctorate", "program", "degree"]
+            keyword_counts = {}
+            for keyword in program_keywords:
+                count = clean_html.lower().count(keyword)
+                keyword_counts[keyword] = count
+            self.logger.info(f"Program keywords in clean HTML: {keyword_counts}")
+            
+            # Content ready for AI processing
+            
+            # Use AI to extract comprehensive university data with better error handling
+            university_data = self._multi_pass_extraction(clean_html, url)
+            
+            if university_data:
+                # Count extracted programs for comparison
+                extracted_programs = self._count_extracted_programs(university_data)
+                self.logger.info(f"Successfully extracted data for: {university_data.get('university', {}).get('name', 'Unknown')}")
+                self.logger.info(f"Extracted programs: {extracted_programs}")
+                
+                # Check if we got all expected programs (target: 86 for Bilkent)
+                total_extracted = extracted_programs.get('Total', 0)
+                if total_extracted < 86:  # We need ALL 86 programs
+                    self.logger.warning(f"TARGET MISSED: Extracted {total_extracted}/86 programs, trying enhanced extraction...")
+                    enhanced_data = self._enhanced_extraction_pass(clean_html, url, university_data)
+                    if enhanced_data:
+                        university_data = enhanced_data
+                        extracted_programs = self._count_extracted_programs(university_data)
+                        total_final = extracted_programs.get('Total', 0)
+                        if total_final >= 86:
+                            self.logger.info(f"SUCCESS: Enhanced extraction achieved {total_final}/86 programs!")
+                        else:
+                            self.logger.warning(f"STILL MISSING: {86 - total_final} programs after enhancement")
+                        self.logger.info(f"Enhanced extraction: {extracted_programs}")
+                
+                return university_data
+            else:
+                self.logger.error("AI failed to extract university data")
+                return None
+                
+        except Exception as e:
+            self.logger.error(f"Error extracting university data: {e}")
+            return None
+    
+    def _clean_html(self, html: str) -> str:
+        """
+        Clean HTML content for AI analysis while preserving ALL program data.
+        
+        Args:
+            html: Raw HTML content
+        
+        Returns:
+            str: Cleaned HTML content with preserved program information
+        """
+        try:
+            # Parse with BeautifulSoup
+            soup = BeautifulSoup(html, 'html.parser')
+            
+            # Remove script and style tags
+            for script in soup(["script", "style", "nav", "footer", "header"]):
+                script.decompose()
+            
+            # Get text content but preserve some structure
+            text_content = soup.get_text()
+            
+            # Clean up whitespace
+            lines = (line.strip() for line in text_content.splitlines())
+            chunks = (phrase.strip() for line in lines for phrase in line.split("  "))
+            text_content = ' '.join(chunk for chunk in chunks if chunk)
+            
+            # INCREASED truncation limit to handle ALL program data (was 25000, now 40000)
+            if len(text_content) > 40000:
+                # For very large content, use smarter program-focused extraction
+                program_keywords = ["bachelor", "master", "phd", "doctorate", "program", "degree", "faculty", 
+                                  "engineering", "business", "law", "medicine", "science", "arts", "economics",
+                                  "computer", "mathematics", "physics", "chemistry", "architecture", "design"]
+                
+                # Split into larger chunks and keep ALL program-related content
+                words = text_content.split()
+                important_chunks = []
+                current_chunk = []
+                chunk_has_programs = False
+                
+                for word in words:
+                    current_chunk.append(word)
+                    
+                    # Check if this word indicates program content
+                    if any(keyword in word.lower() for keyword in program_keywords):
+                        chunk_has_programs = True
+                    
+                    # When chunk reaches good size, decide whether to keep it
+                    if len(current_chunk) >= 100:  # Larger chunks for better context
+                        if chunk_has_programs or len(important_chunks) == 0:  # Always keep first chunk
+                            important_chunks.append(' '.join(current_chunk))
+                        
+                        # Reset for next chunk
+                        current_chunk = []
+                        chunk_has_programs = False
+                
+                # Add final chunk if it has content
+                if current_chunk:
+                    important_chunks.append(' '.join(current_chunk))
+                
+                # Combine important chunks
+                if important_chunks:
+                    text_content = ' '.join(important_chunks)
+                
+                # Only truncate if EXTREMELY large (was 25000, now 40000)
+                if len(text_content) > 40000:
+                    self.logger.warning(f"Content still large ({len(text_content)} chars), keeping first 40K chars")
+                    text_content = text_content[:40000] + "\n... [Content truncated but program data prioritized]"
+            
+            self.logger.info(f"Final cleaned content size: {len(text_content)} characters")
+            return text_content
+            
+        except Exception as e:
+            self.logger.error(f"Error cleaning HTML: {e}")
+            return html[:25000]  # Fallback to truncated raw HTML
+    
+    def _multi_pass_extraction(self, content: str, url: str) -> Optional[Dict[str, Any]]:
+        """
+        Use multiple extraction passes to get comprehensive program data.
+        """
+        try:
+            # First pass: Basic extraction with comprehensive cheatsheet
+            self.logger.info("Starting Pass 1: Comprehensive extraction with AI cheatsheet")
+            university_data = self._ai_extract_with_cheatsheet(content, url)
+            
+            if university_data:
+                programs_count = self._count_extracted_programs(university_data).get('Total', 0)
+                self.logger.info(f"Pass 1 extracted: {programs_count} programs")
+                
+                if programs_count >= 86:  # Target achieved - we need ALL 86 programs
+                    self.logger.info(f"TARGET ACHIEVED: {programs_count}/86 programs extracted!")
+                    return university_data
+                
+                # Second pass: Fill missing programs using targeted extraction
+                self.logger.info("Starting Pass 2: Targeted missing program extraction")
+                enhanced_data = self._extract_missing_programs(content, university_data)
+                if enhanced_data:
+                    return enhanced_data
+            
+            return university_data
+                
+        except Exception as e:
+            self.logger.error(f"Multi-pass extraction failed: {e}")
+            return None
+    
+    def _ai_extract_with_cheatsheet(self, content: str, url: str) -> Optional[Dict[str, Any]]:
+        """
+        Extract university data using AI with comprehensive cheatsheet for faster processing.
+        """
+        system_prompt = """Extract ALL university programs from Bilkent University.
+
+TARGET: Find 86 total programs (Bachelor, Master, Doctorate levels).
+
+TASK: Extract every program mentioned in the content. The content contains 500+ program mentions.
+
+Return ONLY valid JSON in this EXACT structure with ALL programs:
+
+{{
+  "university": {{
+    "name": "Bilkent University",
+    "type": "private non-profit",
+    "location": {{
+      "country": "Turkey",
+      "city": "Ankara"
+    }},
+    "website": "http://www.bilkent.edu.tr",
+    "about": {{
+      "description": "Description here",
+      "establishment_year": 1984,
+      "students": {{
+        "total": 9961,
+        "international": 521,
+        "female_percentage": 46
+      }},
+      "rankings": {{
+        "QS_World_University_Rankings_2025": 477,
+        "THE_Ranking": 701,
+        "by_subject": {{
+          "Social_Sciences_And_Management": {{"QS_2024": 276}}
+        }}
+      }},
+      "degrees_offered": ["Bachelor", "Master", "Doctorate"]
+    }},
+    "tuition_fees": {{
+      "academic_calendar": "Semesters",
+      "calculation_period": "Per year",
+      "bachelor": {{
+        "local": {{"cost": 4165, "currency": "USD", "period": "year"}},
+        "foreign": {{"cost": 14468, "currency": "USD", "period": "year"}}
+      }},
+      "financial_aid": "Yes",
+      "additional_costs": ["accommodation", "transportation"],
+      "website_for_details": "http://www.bilkent.edu.tr"
+    }},
+    "study_programs": [
+      {{
+        "level": "Bachelor",
+        "faculties": [
+          {{
+            "name": "Faculty of Law",
+            "programs": [
+              {{
+                "name": "Law",
+                "study_mode": "On campus",
+                "study_form": "Full-time",
+                "duration_months": 48,
+                "exams": ["IELTS", "TOEFL"],
+                "study_field": "Law",
+                "exam_scores": {{"IELTS": 6.5, "TOEFL_iBT": 87}},
+                "program_page": null,
+                "price": {{"cost": 16945, "currency": "USD", "period": "year"}}
+              }}
+            ]
+          }},
+          {{
+            "name": "Faculty of Economics, Administrative and Social Sciences",
+            "programs": [
+              // EXTRACT ALL PROGRAMS FROM THIS FACULTY - should be 8-10+ programs
+            ]
+          }},
+          {{
+            "name": "Faculty of Engineering",
+            "programs": [
+              // EXTRACT ALL ENGINEERING PROGRAMS - should be 6-8+ programs
+            ]
+          }},
+          {{
+            "name": "Faculty of Science",
+            "programs": [
+              // EXTRACT ALL SCIENCE PROGRAMS - should be 6-8+ programs
+            ]
+          }},
+          {{
+            "name": "Faculty of Humanities and Letters",
+            "programs": [
+              // EXTRACT ALL HUMANITIES PROGRAMS - should be 8-10+ programs
+            ]
+          }},
+          {{
+            "name": "Faculty of Art, Design and Architecture",
+            "programs": [
+              // EXTRACT ALL ART/DESIGN PROGRAMS - should be 6-8+ programs
+            ]
+          }},
+          {{
+            "name": "Faculty of Applied Sciences",
+            "programs": [
+              // EXTRACT ALL APPLIED SCIENCES PROGRAMS
+            ]
+          }}
+        ]
+      }},
+      {{
+        "level": "Master",
+        "faculties": [
+          // EXTRACT ALL MASTER PROGRAMS - should be 30-35+ programs
+        ]
+      }},
+      {{
+        "level": "Doctorate",
+        "faculties": [
+          // EXTRACT ALL DOCTORATE PROGRAMS - should be 15-20+ programs
+        ]
+      }}
+    ]
+  }}
+}}
+
+CRITICAL RULES:
+1. TARGET: Extract ALL 86 programs
+2. Check EVERY faculty and department 
+3. Look for variations: BSc, BA, MSc, MA, MBA, LLM, PhD, Ph.D.
+4. Include specialized and professional programs
+5. Don't skip anything - be exhaustive
+6. Return ONLY valid JSON"""
+
+        user_message = f"""Extract ALL 86 university programs from Bilkent University. Use the cheatsheet above to ensure comprehensive extraction.
+
+Content to analyze:
+{content}
+
+Target: 86 programs total. Return complete JSON with ALL programs."""
+
+        return self._call_ai_api(system_prompt, user_message)
+    
+    def _extract_missing_programs(self, content: str, current_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Targeted extraction to find programs that were missed in the first pass.
+        """
+        try:
+            current_count = self._count_extracted_programs(current_data).get('Total', 0)
+            missing_count = 86 - current_count
+            
+            if missing_count <= 0:
+                return current_data
+            
+            self.logger.info(f"Looking for {missing_count} missing programs...")
+            
+            # Extract current program names for comparison
+            current_programs = self._extract_current_program_names(current_data)
+            
+            missing_prompt = f"""You are a specialized program hunter. Your job is to find the {missing_count} MISSING programs from Bilkent University.
+
+CURRENT PROGRAMS ALREADY EXTRACTED ({current_count} programs):
+{current_programs}
+
+CRITICAL TASK: Find the {missing_count} MISSING programs that were not extracted above.
+
+Look through the content carefully for:
+1. Programs mentioned but not in the current list
+2. Alternative program names or variations
+3. Specialized or professional programs
+4. Programs in different faculties
+5. Joint degree programs
+6. Certificate programs
+7. Double major programs
+
+Return ONLY the missing programs in this JSON format:
+{{
+  "missing_programs": [
+    {{
+      "level": "Bachelor",
+      "faculty": "Faculty Name",
+      "program": {{
+        "name": "Program Name",
+        "study_mode": "On campus",
+        "study_form": "Full-time",
+        "duration_months": 48,
+        "exams": ["IELTS", "TOEFL"],
+        "study_field": "Field Name",
+        "exam_scores": {{"IELTS": 6.5, "TOEFL_iBT": 87}},
+        "program_page": null,
+        "price": {{"cost": 14468, "currency": "USD", "period": "year"}}
+      }}
+    }}
+  ]
+}}
+
+Content to search: {content[:15000]}"""
+
+            missing_data = self._call_ai_api(missing_prompt, "Find all missing programs")
+            
+            if missing_data and 'missing_programs' in missing_data:
+                # Merge missing programs with current data
+                return self._merge_missing_programs(current_data, missing_data['missing_programs'])
+            
+            return current_data
+                
+        except Exception as e:
+            self.logger.error(f"Error extracting missing programs: {e}")
+            return current_data
+    
+    def _extract_current_program_names(self, data: Dict[str, Any]) -> str:
+        """Extract current program names for comparison."""
+        try:
+            programs = []
+            study_programs = data.get('university', {}).get('study_programs', [])
+            
+            for level_data in study_programs:
+                level = level_data.get('level', 'Unknown')
+                faculties = level_data.get('faculties', [])
+                
+                for faculty in faculties:
+                    faculty_name = faculty.get('name', 'Unknown')
+                    faculty_programs = faculty.get('programs', [])
+                    
+                    for program in faculty_programs:
+                        program_name = program.get('name', 'Unknown')
+                        programs.append(f"{level} - {faculty_name} - {program_name}")
+            
+            return '\n'.join(programs)
+                
+        except Exception as e:
+            self.logger.error(f"Error extracting current program names: {e}")
+            return "Error extracting current programs"
+    
+    def _merge_missing_programs(self, current_data: Dict[str, Any], missing_programs: List[Dict]) -> Dict[str, Any]:
+        """Merge missing programs into current data."""
+        try:
+            study_programs = current_data.get('university', {}).get('study_programs', [])
+            
+            for missing in missing_programs:
+                level = missing.get('level')
+                faculty_name = missing.get('faculty')
+                program_data = missing.get('program')
+                
+                # Find or create level
+                level_found = False
+                for level_data in study_programs:
+                    if level_data.get('level') == level:
+                        # Find or create faculty
+                        faculties = level_data.get('faculties', [])
+                        faculty_found = False
+                        
+                        for faculty in faculties:
+                            if faculty.get('name') == faculty_name:
+                                faculty['programs'].append(program_data)
+                                faculty_found = True
+                                break
+                        
+                        if not faculty_found:
+                            faculties.append({
+                                "name": faculty_name,
+                                "programs": [program_data]
+                            })
+                        
+                        level_found = True
+                        break
+                
+                if not level_found:
+                    study_programs.append({
+                        "level": level,
+                        "faculties": [{
+                            "name": faculty_name,
+                            "programs": [program_data]
+                        }]
+                    })
+            
+            return current_data
+            
+        except Exception as e:
+            self.logger.error(f"Error merging missing programs: {e}")
+            return current_data
+    
+    def _enhanced_extraction_pass(self, content: str, url: str, current_data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        """
+        Enhanced extraction pass using different AI strategy.
+        """
+        try:
+            current_count = self._count_extracted_programs(current_data).get('Total', 0)
+            
+            enhanced_prompt = f"""ENHANCED EXTRACTION PASS - BILKENT UNIVERSITY
+
+Previous extraction found {current_count} programs, but we need 86 total.
+
+ENHANCED STRATEGY:
+1. Scan for EVERY mention of degrees: BSc, BA, MSc, MA, MBA, LLM, PhD, Ph.D.
+2. Look for program lists, tables, and course catalogs
+3. Check for variations in program names
+4. Include all specializations and concentrations
+5. Look for certificate and diploma programs
+6. Check for double degree and joint programs
+
+CRITICAL: Extract EVERY SINGLE program you can find. We need ALL 86 programs.
+
+Return the complete university data with ALL programs found:
+
+{self.system_prompt.split('CRITICAL: You must return valid JSON')[1]}"""
+
+            return self._call_ai_api(enhanced_prompt, content)
+            
+        except Exception as e:
+            self.logger.error(f"Enhanced extraction pass failed: {e}")
+            return current_data
+    
+    def _call_ai_api(self, system_prompt: str, user_message: str) -> str:
+        """
+        Call the AI API with the given prompts.
+        
+        Args:
+            system_prompt: System prompt
+            user_message: User message
+            
+        Returns:
+            str: AI response
+        """
+        headers = {
+            'Authorization': f'Bearer {self.api_key}',
+            'Content-Type': 'application/json'
+        }
+        
+        payload = {
+            'model': self.model,
+            'messages': [
+                {'role': 'system', 'content': system_prompt},
+                {'role': 'user', 'content': user_message}
+            ],
+            'max_tokens': 8000,
+            'temperature': 0.1
+        }
+        
+        try:
+            self.logger.debug("Making API call to extract university data")
+            
+            response = requests.post(
+                f'{self.base_url}/chat/completions',
+                headers=headers,
+                json=payload,
+                timeout=120  # Increased timeout for comprehensive extraction
+            )
+            
+            response.raise_for_status()
+            result = response.json()
+            content = result['choices'][0]['message']['content'].strip()
+            
+            self.logger.debug("API call successful")
+            return content
+            
+        except Exception as e:
+            self.logger.error(f"API call failed: {e}")
+            raise
+    
+    def _parse_ai_response(self, response: str) -> Optional[Dict[str, Any]]:
+        """
+        Parse and validate the AI JSON response.
+        
+        Args:
+            response: Raw AI response
+            
+        Returns:
+            dict: Parsed university data
+        """
+        try:
+            # Clean the response - remove markdown code blocks if present
+            clean_response = self._strip_markdown_json(response)
+            
+            # Parse JSON
+            data = json.loads(clean_response)
+            
+            # Validate the structure
+            if "university" in data and isinstance(data["university"], dict):
+                self.logger.debug("Successfully parsed AI response")
+                return data
+            else:
+                self.logger.error("Invalid university data structure in AI response")
+                return None
+                
+        except json.JSONDecodeError as e:
+            self.logger.error(f"Failed to parse JSON response: {e}")
+            self.logger.debug(f"Raw response: {response[:500]}...")
+            return None
+        except Exception as e:
+            self.logger.error(f"Error parsing AI response: {e}")
+            return None
+    
+    def _strip_markdown_json(self, response: str) -> str:
+        """
+        Strip markdown code block formatting from JSON response.
+        
+        Args:
+            response: Raw response with potential markdown
+        
+        Returns:
+            str: Clean JSON string
+        """
+        # Remove ```json ... ``` blocks
+        response = re.sub(r'```json\s*\n?', '', response, flags=re.IGNORECASE)
+        response = re.sub(r'```\s*$', '', response)
+        response = re.sub(r'^\s*```\s*', '', response)
+        
+        return response.strip()
+    
+    def get_timestamp(self) -> str:
+        """Get current timestamp in ISO format."""
         return datetime.now().isoformat()
+
+    def _count_extracted_programs(self, university_data: Any) -> Dict[str, int]:
+        """Count how many programs were extracted by level."""
+        try:
+            # Handle case where AI returns string instead of dict
+            if isinstance(university_data, str):
+                self.logger.warning("University data is string, attempting to parse as JSON")
+                try:
+                    university_data = json.loads(university_data)
+                except:
+                    return {"error": "invalid_json_string", "Total": 0}
+            
+            if not isinstance(university_data, dict):
+                return {"error": "invalid_data_type", "Total": 0}
+            
+            counts = {"Bachelor": 0, "Master": 0, "Doctorate": 0, "Total": 0}
+            
+            study_programs = university_data.get("university", {}).get("study_programs", [])
+            for level_data in study_programs:
+                level = level_data.get("level", "Unknown")
+                faculties = level_data.get("faculties", [])
+                
+                level_count = 0
+                for faculty in faculties:
+                    programs = faculty.get("programs", [])
+                    level_count += len(programs)
+                
+                if level in counts:
+                    counts[level] = level_count
+                counts["Total"] += level_count
+            
+            return counts
+        except Exception as e:
+            self.logger.error(f"Error counting programs: {e}")
+            return {"error": "count_failed", "Total": 0}

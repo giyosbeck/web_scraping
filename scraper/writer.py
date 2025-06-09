@@ -1,103 +1,109 @@
-import os
+"""
+University Data Writer - Handles saving extracted university data
+"""
+
 import json
-import logging
-import re
-from pathlib import Path
+import os
 from typing import Dict, Any
+from scraper.logger_config import get_logger
 
 
-class DataWriter:
-    """
-    Handles writing university data to JSON files with proper directory structure.
-    """
-    
-    def __init__(self, base_output_path: str = "unipage_data/"):
-        """
-        Initialize DataWriter with base output path.
+class Writer:
+    def __init__(self, logger):
+        self.logger = logger
         
-        Args:
-            base_output_path (str): Base directory for output files
-        """
-        self.base_output_path = Path(base_output_path)
-        self.logger = logging.getLogger(__name__)
-        
-        # Create base directory if it doesn't exist
-        self.base_output_path.mkdir(parents=True, exist_ok=True)
-        self.logger.info(f"DataWriter initialized with base path: {self.base_output_path}")
-    
-    def _sanitize_filename(self, filename: str) -> str:
-        """
-        Sanitize university name for use as filename.
-        
-        Args:
-            filename (str): Raw university name
+    def save_to_json(self, data, output_file):
+        """Save data to JSON file"""
+        try:
+            # Create output directory if it doesn't exist
+            os.makedirs(os.path.dirname(output_file), exist_ok=True)
             
-        Returns:
-            str: Sanitized filename safe for filesystem
-        """
-        # Remove or replace invalid characters for filenames
-        sanitized = re.sub(r'[<>:"/\\|?*]', '_', filename)
-        # Replace multiple spaces/underscores with single underscore
-        sanitized = re.sub(r'[_\s]+', '_', sanitized)
-        # Remove leading/trailing underscores and spaces
-        sanitized = sanitized.strip('_ ')
-        # Limit length to avoid filesystem issues
-        if len(sanitized) > 200:
-            sanitized = sanitized[:200]
-        
-        return sanitized
+            # Save data
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+                
+            self.logger.info(f"Successfully saved data to {output_file}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error saving data to {output_file}: {e}")
+            return False
+
+
+class UniversityWriter:
+    """Handles saving extracted university data to files."""
     
-    def save_university_data(self, country: str, city: str, uni_name: str, data_dict: Dict[str, Any]) -> bool:
+    def __init__(self, output_dir: str = "output"):
         """
-        Save university data to JSON file with proper directory structure.
+        Initialize the writer.
         
         Args:
-            country (str): Country name
-            city (str): City name
-            uni_name (str): University name
-            data_dict (Dict[str, Any]): University data to save
+            output_dir: Directory to save output files
+        """
+        self.logger = get_logger(__name__)
+        self.output_dir = output_dir
+        self._ensure_output_dir()
+    
+    def _ensure_output_dir(self):
+        """Create output directory if it doesn't exist."""
+        try:
+            if not os.path.exists(self.output_dir):
+                os.makedirs(self.output_dir)
+                self.logger.info(f"Created output directory: {self.output_dir}")
+        except Exception as e:
+            self.logger.error(f"Error creating output directory: {e}")
+    
+    def save_universities_data(self, data: Dict[str, Any], filename: str) -> bool:
+        """
+        Save universities data to a JSON file.
+        
+        Args:
+            data: University data to save
+            filename: Output filename
             
         Returns:
             bool: True if successful, False otherwise
         """
         try:
-            # Sanitize inputs for directory/file names
-            sanitized_country = self._sanitize_filename(country)
-            sanitized_city = self._sanitize_filename(city)
-            sanitized_uni_name = self._sanitize_filename(uni_name)
+            filepath = os.path.join(self.output_dir, filename)
             
-            # Create directory structure: unipage_data/{country}/{city}
-            output_dir = self.base_output_path / sanitized_country / sanitized_city
-            output_dir.mkdir(parents=True, exist_ok=True)
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
             
-            # Create output file path
-            output_file = output_dir / f"{sanitized_uni_name}.json"
-            
-            # Write data as pretty-printed JSON
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(data_dict, f, indent=2, ensure_ascii=False, sort_keys=True)
-            
-            self.logger.info(f"Successfully saved university data: {output_file}")
+            self.logger.info(f"Successfully saved universities data to: {filepath}")
             return True
             
         except Exception as e:
-            self.logger.error(f"Failed to save university data for {uni_name}: {str(e)}")
+            self.logger.error(f"Error saving universities data: {e}")
             return False
     
-    def get_output_path(self, country: str, city: str, uni_name: str) -> Path:
+    def save_single_university(self, university_data: Dict[str, Any], filename: str = None) -> bool:
         """
-        Get the expected output file path for given university.
+        Save a single university's data to a JSON file.
         
         Args:
-            country (str): Country name
-            city (str): City name
-            uni_name (str): University name
+            university_data: Single university data
+            filename: Optional custom filename
             
         Returns:
-            Path: Expected output file path
+            bool: True if successful, False otherwise
         """
-        sanitized_country = self._sanitize_filename(country)
-        sanitized_city = self._sanitize_filename(city)
-        sanitized_uni_name = self._sanitize_filename(uni_name)
-        
-        return self.base_output_path / sanitized_country / sanitized_city / f"{sanitized_uni_name}.json"
+        try:
+            if filename is None:
+                # Generate filename from university name
+                uni_name = university_data.get('university', {}).get('name', 'Unknown')
+                safe_name = "".join(c for c in uni_name if c.isalnum() or c in (' ', '-', '_')).strip()
+                safe_name = safe_name.replace(' ', '_')
+                filename = f"{safe_name}.json"
+            
+            filepath = os.path.join(self.output_dir, filename)
+            
+            with open(filepath, 'w', encoding='utf-8') as f:
+                json.dump(university_data, f, indent=2, ensure_ascii=False)
+            
+            self.logger.info(f"Successfully saved university data to: {filepath}")
+            return True
+            
+        except Exception as e:
+            self.logger.error(f"Error saving single university data: {e}")
+            return False
